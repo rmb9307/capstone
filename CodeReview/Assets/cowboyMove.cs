@@ -68,7 +68,7 @@ public class cowboyMove : MonoBehaviour {
                 }
                 if (idx > -1)
                 {
-
+                    //TRANSFORM
                     //HANDS
                     float horizontalHandLeft =
                         (_Data[idx].Joints[JointType.WristRight].Position.X);
@@ -286,6 +286,225 @@ public class cowboyMove : MonoBehaviour {
                         horizontalRightFoot * 5,
                         verticalRightFoot * 5,
                         depthRightFoot * 5);
+
+                    //ROTATE
+                    //HANDS
+                    float horizontalRotHandLeft =
+                        (_Data[idx].JointOrientations[JointType.WristRight].Orientation.X);
+                    float verticalRotHandLeft =
+                        (_Data[idx].JointOrientations[JointType.WristRight].Orientation.Y);
+                    float depthRotHandLeft =
+                        (_Data[idx].JointOrientations[JointType.WristRight].Orientation.Z);
+
+                    cowboyLeftHand.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotHandLeft * 5,
+                        verticalRotHandLeft * 5,
+                        depthRotHandLeft * 5);
+
+                    float horizontalRotHandRight =
+                        (_Data[idx].JointOrientations[JointType.WristLeft].Orientation.X);
+                    float verticalRotHandRight =
+                        (_Data[idx].JointOrientations[JointType.WristLeft].Orientation.Y);
+                    float depthRotHandRight =
+                        (_Data[idx].JointOrientations[JointType.WristLeft].Orientation.Z);
+
+                    cowboyRightHand.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotHandRight * 5,
+                        verticalRotHandRight * 5,
+                        depthRotHandRight * 5);
+
+                    //ELBOWS
+                    float horizontalRotLeftForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowRight].Orientation.X);
+                    float verticalRotLeftForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowRight].Orientation.Y);
+                    float depthRotLeftForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowRight].Orientation.Z);
+
+                    cowboyLeftForearm.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotLeftForearm * 5,
+                        verticalRotLeftForearm * 5,
+                        depthRotLeftForearm * 5);
+
+                    float horizontalRotRightForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowLeft].Orientation.X);
+                    float verticalRotRightForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowLeft].Orientation.Y);
+                    float depthRotRightForearm =
+                        (_Data[idx].JointOrientations[JointType.ElbowLeft].Orientation.Z);
+
+                    cowboyRightForearm.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotRightForearm * 5,
+                        verticalRotRightForearm * 5,
+                        depthRotRightForearm * 5);
+
+                    //SHOULDERS
+                    float horizontalRotLeftUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderRight].Orientation.X);
+                    float verticalRotLeftUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderRight].Orientation.Y);
+                    float depthRotLeftUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderRight].Orientation.Z);
+
+                    cowboyLeftUpperarm.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotLeftUpperarm * 5,
+                        verticalRotLeftUpperarm * 5,
+                        depthRotLeftUpperarm * 5);
+
+                    float horizontalRotRightUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderLeft].Orientation.X);
+                    float verticalRotRightUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderLeft].Orientation.Y);
+                    float depthRotRightUpperarm =
+                        (_Data[idx].JointOrientations[JointType.ShoulderLeft].Orientation.Z);
+
+                    cowboyRightUpperarm.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotRightUpperarm * 5,
+                        verticalRotRightUpperarm * 5,
+                        depthRotRightUpperarm * 5);
+
+                    //NECK
+                    float horizontalRotNeck =
+                        (_Data[idx].JointOrientations[JointType.Neck].Orientation.X);
+                    float verticalRotNeck =
+                        (_Data[idx].JointOrientations[JointType.Neck].Orientation.Y);
+                    float depthRotNeck =
+                        (_Data[idx].JointOrientations[JointType.Neck].Orientation.Z);
+
+                    cowboyNeck.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotNeck * 5,
+                        verticalRotNeck * 5,
+                        depthRotNeck * 5);
+
+                    //HEAD
+                    float horizontalRotHead =
+                        (_Data[idx].JointOrientations[JointType.Head].Orientation.X);
+                    float verticalRotHead =
+                        (_Data[idx].JointOrientations[JointType.Head].Orientation.Y);
+                    float depthRotHead =
+                        (_Data[idx].JointOrientations[JointType.Head].Orientation.Z);
+
+                    cowboyHead.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotHead * 5,
+                        verticalRotHead * 5,
+                        depthRotHead * 5);
+
+                    //SPINE
+                    float horizontalRotSpine =
+                        (_Data[idx].JointOrientations[JointType.SpineMid].Orientation.X);
+                    float verticalRotSpine =
+                        (_Data[idx].JointOrientations[JointType.SpineMid].Orientation.Y);
+                    float depthRotSpine =
+                        (_Data[idx].JointOrientations[JointType.SpineMid].Orientation.Z);
+
+                    cowboySpine.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotSpine * 5,
+                        verticalRotSpine * 5,
+                        depthRotSpine * 5);
+
+                    //PELVIS
+                    float horizontalRotPelvis =
+                        (_Data[idx].JointOrientations[JointType.SpineBase].Orientation.X);
+                    float verticalRotPelvis =
+                        (_Data[idx].JointOrientations[JointType.SpineBase].Orientation.Y);
+                    float depthRotPelvis =
+                        (_Data[idx].JointOrientations[JointType.SpineBase].Orientation.Z);
+
+                    cowboyPelvis.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotPelvis * 5,
+                        verticalRotPelvis * 5,
+                        depthRotPelvis * 5);
+
+                    //HIPS
+                    float horizontalRotLeftThigh =
+                        (_Data[idx].JointOrientations[JointType.HipRight].Orientation.X);
+                    float verticalRotLeftThigh =
+                        (_Data[idx].JointOrientations[JointType.HipRight].Orientation.Y);
+                    float depthRotLeftThigh =
+                        (_Data[idx].JointOrientations[JointType.HipRight].Orientation.Z);
+
+                    cowboyLeftThigh.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotLeftThigh * 5,
+                        verticalRotLeftThigh * 5,
+                        depthRotLeftThigh * 5);
+
+                    float horizontalRotRightThigh =
+                        (_Data[idx].JointOrientations[JointType.HipLeft].Orientation.X);
+                    float verticalRotRightThigh =
+                        (_Data[idx].JointOrientations[JointType.HipLeft].Orientation.Y);
+                    float depthRotRightThigh =
+                        (_Data[idx].JointOrientations[JointType.HipLeft].Orientation.Z);
+
+                    cowboyRightThigh.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotRightThigh * 5,
+                        verticalRotRightThigh * 5,
+                        depthRotRightThigh * 5);
+
+                    //KNEES
+                    float horizontalRotLeftCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeRight].Orientation.X);
+                    float verticalRotLeftCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeRight].Orientation.Y);
+                    float depthRotLeftCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeRight].Orientation.Z);
+
+                    cowboyLeftCalf.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotLeftCalf * 5,
+                        verticalRotLeftCalf * 5,
+                        depthRotLeftCalf * 5);
+
+                    float horizontalRotRightCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeLeft].Orientation.X);
+                    float verticalRotRightCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeLeft].Orientation.Y);
+                    float depthRotRightCalf =
+                        (_Data[idx].JointOrientations[JointType.KneeLeft].Orientation.Z);
+
+                    cowboyRightCalf.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotRightCalf * 5,
+                        verticalRotRightCalf * 5,
+                        depthRotRightCalf * 5);
+
+                    //FEET
+                    float horizontalRotLeftFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleRight].Orientation.X);
+                    float verticalRotLeftFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleRight].Orientation.Y);
+                    float depthRotLeftFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleRight].Orientation.Z);
+
+                    cowboyLeftFoot.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotLeftFoot * 5,
+                        verticalRotLeftFoot * 5,
+                        depthRotLeftFoot * 5);
+
+                    float horizontalRotRightFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleLeft].Orientation.X);
+                    float verticalRotRightFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleLeft].Orientation.Y);
+                    float depthRotRightFoot =
+                        (_Data[idx].JointOrientations[JointType.AnkleLeft].Orientation.Z);
+
+                    cowboyRightFoot.transform.rotation =
+                        Quaternion.Euler(
+                        horizontalRotRightFoot * 5,
+                        verticalRotRightFoot * 5,
+                        depthRotRightFoot * 5);
 
                 }
             }
