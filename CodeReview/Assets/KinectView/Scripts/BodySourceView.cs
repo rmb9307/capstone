@@ -42,6 +42,12 @@ public class BodySourceView : MonoBehaviour
         { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
         { Kinect.JointType.Neck, Kinect.JointType.Head },
     };
+
+    private Dictionary<Kinect.JointType, float> jointSizes = new Dictionary<Kinect.JointType, float>() {
+        { Kinect.JointType.Head, 3.0f },
+        { Kinect.JointType.Neck, 2.0f },
+
+    };
     
     void Update () 
     {
@@ -113,14 +119,18 @@ public class BodySourceView : MonoBehaviour
         
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
-            GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             
             LineRenderer lr = jointObj.AddComponent<LineRenderer>();
             lr.SetVertexCount(2);
             lr.material = BoneMaterial;
-            lr.SetWidth(0.05f, 0.05f);
-            
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            lr.SetWidth(0.5f, 0.5f);
+
+            float scale = 2f;
+            if (jointSizes.ContainsKey(jt)) {
+                scale = jointSizes[jt];
+            }
+            jointObj.transform.localScale = new Vector3(scale, scale, scale);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
         }
