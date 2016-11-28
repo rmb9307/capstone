@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dbded59e514864379bba5171e5500165
-timeCreated: 1480299644
+timeCreated: 1480355808
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -33,6 +33,16 @@ ModelImporter:
     100050: SpineMid
     100052: WristLeft
     100054: WristRight
+    100056: HeadTop
+    100058: HeadTop_end
+    100060: TipLeft
+    100062: TipLeft_end
+    100064: TipRight
+    100066: TipRight_end
+    100068: ToeLeft
+    100070: ToeLeft_end
+    100072: ToeRight
+    100074: ToeRight_end
     400000: AnkleLeft
     400002: AnkleLeft_end
     400004: AnkleRight
@@ -61,6 +71,18 @@ ModelImporter:
     400050: SpineMid
     400052: WristLeft
     400054: WristRight
+    400056: HeadTop
+    400058: HeadTop_end
+    400060: TipLeft
+    400062: TipLeft_end
+    400064: TipRight
+    400066: TipRight_end
+    400068: ToeLeft
+    400070: ToeLeft_end
+    400072: ToeRight
+    400074: ToeRight_end
+    2300000: Cube
+    3300000: Cube
     4300000: Cube
     9500000: //RootNode
     13700000: Cube
@@ -72,13 +94,13 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -105,7 +127,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
@@ -119,7 +141,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: SpineBase
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
