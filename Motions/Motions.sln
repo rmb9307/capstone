@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{ED2E5969-D41A-7C48-6DB4-AA09DD2B5AE5}") = "Motions", "Assembly-CSharp.csproj", "{F0618B70-CCE6-AAFE-C8B7-3DDED3DBE7AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0618B70-CCE6-AAFE-C8B7-3DDED3DBE7AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0618B70-CCE6-AAFE-C8B7-3DDED3DBE7AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0618B70-CCE6-AAFE-C8B7-3DDED3DBE7AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0618B70-CCE6-AAFE-C8B7-3DDED3DBE7AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

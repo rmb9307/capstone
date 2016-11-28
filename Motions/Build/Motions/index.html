@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> Motions </title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <script src="TemplateData/UnityProgress.js"></script>
+
+    <!-- Latest compiled and minified jQuery-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body class="template">
+<!--_______NAVBAR______________________________________________________________________________________________________________________-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Motions</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#about">About</a></li>
+            <li><a href="#Demo">Videos</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+<!--_______COVER______________________________________________________________________________________________________________________-->
+    <div class="home-cover">
+      <div class="center_div">
+        <h4> About </h4>
+        <h6> Motions is a motion capture application that allows users to record movements then view it in Virtual Reality using Google Cardboard. </h6>
+      </div>
+    </div>
+<!--_______ABOUT______________________________________________________________________________________________________________________-->
+
+    <div id="about"> 
+
+    </div>
+<!--_______DEMO______________________________________________________________________________________________________________________-->
+    <div class="demo" id="Demo"> 
+          <p class="header"><span>Unity WebGL Player | </span>Motions</p>
+          <div class="template-wrap clear">
+            <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+            <br>
+            <div class="logo"></div>
+            <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+            <div class="title">Motions</div>
+          </div>
+          <p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+          <script type='text/javascript'>
+        var Module = {
+          TOTAL_MEMORY: 268435456,
+          errorhandler: null,     // arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+          compatibilitycheck: null,
+          dataUrl: "Release/Motions.data",
+          codeUrl: "Release/Motions.js",
+          memUrl: "Release/Motions.mem",
+          
+        };
+      </script>
+      <script src="Release/UnityLoader.js"></script>
+    </div>
+<!--_______END DEMO______________________________________________________________________________________________________________________-->
+    
+  </body>
+</html>
