@@ -1,69 +1,69 @@
 fileFormatVersion: 2
 guid: dbded59e514864379bba5171e5500165
-timeCreated: 1480296521
+timeCreated: 1480299644
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: AnkleLeft
-    100002: AnkleRight
-    100004: Camera
-    100006: Cube
-    100008: ElbowLeft
-    100010: ElbowRight
-    100012: //RootNode
-    100014: FootLeft
-    100016: FootLeft_end
-    100018: FootRight
-    100020: FootRight_end
-    100022: Head
-    100024: Head_end
-    100026: HipLeft
-    100028: HipRight
-    100030: KneeLeft
-    100032: KneeRight
-    100034: Lamp
-    100036: metarig.001
-    100038: Neck
-    100040: ShoulderLeft
-    100042: ShoulderRight
-    100044: SpineBase
-    100046: SpineMid
-    100048: WristLeft
-    100050: WristLeft_end
-    100052: WristRight
-    100054: WristRight_end
+    100002: AnkleLeft_end
+    100004: AnkleRight
+    100006: AnkleRight_end
+    100008: Camera
+    100010: Cube
+    100012: ElbowLeft
+    100014: ElbowRight
+    100016: //RootNode
+    100018: HandLeft
+    100020: HandLeft_end
+    100022: HandRight
+    100024: HandRight_end
+    100026: Head
+    100028: Head_end
+    100030: HipLeft
+    100032: HipRight
+    100034: KneeLeft
+    100036: KneeRight
+    100038: Lamp
+    100040: metarig.001
+    100042: Neck
+    100044: ShoulderLeft
+    100046: ShoulderRight
+    100048: SpineBase
+    100050: SpineMid
+    100052: WristLeft
+    100054: WristRight
     400000: AnkleLeft
-    400002: AnkleRight
-    400004: Camera
-    400006: Cube
-    400008: ElbowLeft
-    400010: ElbowRight
-    400012: //RootNode
-    400014: FootLeft
-    400016: FootLeft_end
-    400018: FootRight
-    400020: FootRight_end
-    400022: Head
-    400024: Head_end
-    400026: HipLeft
-    400028: HipRight
-    400030: KneeLeft
-    400032: KneeRight
-    400034: Lamp
-    400036: metarig.001
-    400038: Neck
-    400040: ShoulderLeft
-    400042: ShoulderRight
-    400044: SpineBase
-    400046: SpineMid
-    400048: WristLeft
-    400050: WristLeft_end
-    400052: WristRight
-    400054: WristRight_end
-    2300000: Cube
-    3300000: Cube
+    400002: AnkleLeft_end
+    400004: AnkleRight
+    400006: AnkleRight_end
+    400008: Camera
+    400010: Cube
+    400012: ElbowLeft
+    400014: ElbowRight
+    400016: //RootNode
+    400018: HandLeft
+    400020: HandLeft_end
+    400022: HandRight
+    400024: HandRight_end
+    400026: Head
+    400028: Head_end
+    400030: HipLeft
+    400032: HipRight
+    400034: KneeLeft
+    400036: KneeRight
+    400038: Lamp
+    400040: metarig.001
+    400042: Neck
+    400044: ShoulderLeft
+    400046: ShoulderRight
+    400048: SpineBase
+    400050: SpineMid
+    400052: WristLeft
+    400054: WristRight
     4300000: Cube
+    9500000: //RootNode
+    13700000: Cube
   materials:
     importMaterials: 1
     materialName: 0
@@ -122,7 +122,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
