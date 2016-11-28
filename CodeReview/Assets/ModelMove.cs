@@ -2,30 +2,29 @@
 using System.Collections;
 using Windows.Kinect;
 
-public class cowboyMove : MonoBehaviour {
-
+public class ModelMove : MonoBehaviour {
     private KinectSensor _Sensor;
     private BodyFrameReader _Reader;
     private Body[] _Data = null;
-    public GameObject cowboyLeftHand;
-    public GameObject cowboyRightHand;
-    public GameObject cowboyLeftForearm;
-    public GameObject cowboyRightForearm;
-    public GameObject cowboyLeftUpperarm;
-    public GameObject cowboyRightUpperarm;
-    public GameObject cowboyLeftThigh;
-    public GameObject cowboyRightThigh;
-    public GameObject cowboyLeftCalf;
-    public GameObject cowboyRightCalf;
-    public GameObject cowboyLeftHeel;
-    public GameObject cowboyRightHeel;
-    public GameObject cowboyLeftFoot;
-    public GameObject cowboyRightFoot;
-    public GameObject cowboyPelvis;
-    public GameObject cowboySpine;
-    public GameObject cowboyChest;
-    public GameObject cowboyNeck;
-    public GameObject cowboyHead;
+    public GameObject modelLeftHand;
+    public GameObject modelRightHand;
+    public GameObject modelLeftForearm;
+    public GameObject modelRightForearm;
+    public GameObject modelLeftUpperarm;
+    public GameObject modelRightUpperarm;
+    public GameObject modelLeftThigh;
+    public GameObject modelRightThigh;
+    public GameObject modelLeftCalf;
+    public GameObject modelRightCalf;
+    public GameObject modelLeftHeel;
+    public GameObject modelRightHeel;
+    public GameObject modelLeftFoot;
+    public GameObject modelRightFoot;
+    public GameObject modelPelvis;
+    public GameObject modelSpine;
+    //public GameObject modelChest;
+    public GameObject modelNeck;
+    public GameObject modelHead;
 
 
     // Use this for initialization
@@ -74,26 +73,26 @@ public class cowboyMove : MonoBehaviour {
 
                     //HANDS
                     float horizontalHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.WristLeft].Position.X / 2) + (_Data[idx].Joints[JointType.HandTipLeft].Position.X / 2));
                     float verticalHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.WristLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.HandTipLeft].Position.Y / 2));
                     float depthHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.WristLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.HandTipLeft].Position.Z / 2));
 
-                    cowboyLeftHand.transform.position =
+                    modelLeftHand.transform.position =
                         new Vector3(
                         horizontalHandLeft * 5,
                         verticalHandLeft * 5,
                         depthHandLeft * 5);
 
                     float horizontalHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.X);
+                        ((_Data[idx].Joints[JointType.WristRight].Position.X / 2) + (_Data[idx].Joints[JointType.HandTipRight].Position.X / 2));
                     float verticalHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.WristRight].Position.Y / 2) + (_Data[idx].Joints[JointType.HandTipRight].Position.Y / 2));
                     float depthHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.WristRight].Position.Z / 2) + (_Data[idx].Joints[JointType.HandTipRight].Position.Z / 2));
 
-                    cowboyRightHand.transform.position =
+                    modelRightHand.transform.position =
                         new Vector3(
                         horizontalHandRight * 5,
                         verticalHandRight * 5,
@@ -101,26 +100,26 @@ public class cowboyMove : MonoBehaviour {
 
                     //ELBOWS
                     float horizontalLeftForearm =
-                        (_Data[idx].Joints[JointType.ElbowLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.ElbowLeft].Position.X / 2) + (_Data[idx].Joints[JointType.WristLeft].Position.X / 2));
                     float verticalLeftForearm =
-                        (_Data[idx].Joints[JointType.ElbowLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.ElbowLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.WristLeft].Position.Y / 2));
                     float depthLeftForearm =
-                        (_Data[idx].Joints[JointType.ElbowLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.ElbowLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.WristLeft].Position.Z / 2));
 
-                    cowboyLeftForearm.transform.position =
+                    modelLeftForearm.transform.position =
                         new Vector3(
                         horizontalLeftForearm * 5,
                         verticalLeftForearm * 5,
                         depthLeftForearm * 5);
 
                     float horizontalRightForearm =
-                        (_Data[idx].Joints[JointType.ElbowRight].Position.X);
+                        ((_Data[idx].Joints[JointType.ElbowRight].Position.X / 2) + (_Data[idx].Joints[JointType.WristRight].Position.X / 2));
                     float verticalRightForearm =
-                        (_Data[idx].Joints[JointType.ElbowRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.ElbowRight].Position.Y / 2) + (_Data[idx].Joints[JointType.WristRight].Position.Y / 2));
                     float depthRightForearm =
-                        (_Data[idx].Joints[JointType.ElbowRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.ElbowRight].Position.Z / 2) + (_Data[idx].Joints[JointType.WristRight].Position.Z / 2));
 
-                    cowboyRightForearm.transform.position =
+                    modelRightForearm.transform.position =
                         new Vector3(
                         horizontalRightForearm * 5,
                         verticalRightForearm * 5,
@@ -128,26 +127,26 @@ public class cowboyMove : MonoBehaviour {
 
                     //SHOULDERS
                     float horizontalLeftUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.ShoulderLeft].Position.X / 2) + (_Data[idx].Joints[JointType.ElbowLeft].Position.X / 2));
                     float verticalLeftUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.ShoulderLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.ElbowLeft].Position.Y / 2));
                     float depthLeftUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.ShoulderLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.ElbowLeft].Position.Z / 2));
 
-                    cowboyLeftUpperarm.transform.position =
+                    modelLeftUpperarm.transform.position =
                         new Vector3(
                         horizontalLeftUpperarm * 5,
                         verticalLeftUpperarm * 5,
                         depthLeftUpperarm * 5);
 
                     float horizontalRightUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderRight].Position.X);
+                        ((_Data[idx].Joints[JointType.ShoulderRight].Position.X / 2) + (_Data[idx].Joints[JointType.ElbowRight].Position.X / 2));
                     float verticalRightUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.ShoulderRight].Position.Y / 2) + (_Data[idx].Joints[JointType.ElbowRight].Position.Y / 2));
                     float depthRightUpperarm =
-                        (_Data[idx].Joints[JointType.ShoulderRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.ShoulderRight].Position.Z / 2) + (_Data[idx].Joints[JointType.ElbowRight].Position.Z / 2));
 
-                    cowboyRightUpperarm.transform.position =
+                    modelRightUpperarm.transform.position =
                         new Vector3(
                         horizontalRightUpperarm * 5,
                         verticalRightUpperarm * 5,
@@ -155,13 +154,13 @@ public class cowboyMove : MonoBehaviour {
 
                     //NECK
                     float horizontalNeck =
-                        (_Data[idx].Joints[JointType.Neck].Position.X);
+                        ((_Data[idx].Joints[JointType.SpineShoulder].Position.X / 2) + (_Data[idx].Joints[JointType.Neck].Position.X / 2));
                     float verticalNeck =
-                        (_Data[idx].Joints[JointType.Neck].Position.Y);
+                        ((_Data[idx].Joints[JointType.SpineShoulder].Position.Y / 2) + (_Data[idx].Joints[JointType.Neck].Position.Y / 2));
                     float depthNeck =
-                        (_Data[idx].Joints[JointType.Neck].Position.Z);
+                        ((_Data[idx].Joints[JointType.SpineShoulder].Position.Z / 2) + (_Data[idx].Joints[JointType.Neck].Position.Z / 2));
 
-                    cowboyNeck.transform.position =
+                    modelNeck.transform.position =
                         new Vector3(
                         horizontalNeck * 5,
                         verticalNeck * 5,
@@ -169,41 +168,41 @@ public class cowboyMove : MonoBehaviour {
 
                     //HEAD
                     float horizontalHead =
-                        (_Data[idx].Joints[JointType.Head].Position.X);
+                        ((_Data[idx].Joints[JointType.Neck].Position.X / 2) + (_Data[idx].Joints[JointType.Head].Position.X / 2));
                     float verticalHead =
-                        (_Data[idx].Joints[JointType.Head].Position.Y);
+                        ((_Data[idx].Joints[JointType.Neck].Position.Y / 2) + (_Data[idx].Joints[JointType.Head].Position.Y / 2));
                     float depthHead =
-                        (_Data[idx].Joints[JointType.Head].Position.Z);
+                        ((_Data[idx].Joints[JointType.Neck].Position.Z / 2) + (_Data[idx].Joints[JointType.Head].Position.Z / 2));
 
-                    cowboyHead.transform.position =
+                    modelHead.transform.position =
                         new Vector3(
                         horizontalHead * 5,
                         verticalHead * 5,
                         depthHead * 5);
 
-                    //SPINE SHOULDERS
-                    float horizontalChest =
-                        (_Data[idx].Joints[JointType.SpineShoulder].Position.X);
-                    float verticalChest =
-                        (_Data[idx].Joints[JointType.SpineShoulder].Position.Y);
-                    float depthChest =
-                        (_Data[idx].Joints[JointType.SpineShoulder].Position.Z);
+                    // //SPINE SHOULDERS
+                    // float horizontalChest =
+                    //     (_Data[idx].Joints[JointType.SpineShoulder].Position.X);
+                    // float verticalChest =
+                    //     (_Data[idx].Joints[JointType.SpineShoulder].Position.Y);
+                    // float depthChest =
+                    //     (_Data[idx].Joints[JointType.SpineShoulder].Position.Z);
 
-                    cowboyChest.transform.position =
-                        new Vector3(
-                        horizontalChest * 5,
-                        verticalChest * 5,
-                        depthChest * 5);
+                    // modelChest.transform.position =
+                    //     new Vector3(
+                    //     horizontalChest * 5,
+                    //     verticalChest * 5,
+                    //     depthChest * 5);
 
                     //SPINE
                     float horizontalSpine =
-                        (_Data[idx].Joints[JointType.SpineMid].Position.X);
+                        ((_Data[idx].Joints[JointType.SpineMid].Position.X / 2) + (_Data[idx].Joints[JointType.SpineShoulder].Position.X / 2));
                     float verticalSpine =
-                        (_Data[idx].Joints[JointType.SpineMid].Position.Y);
+                        ((_Data[idx].Joints[JointType.SpineMid].Position.Y / 2) + (_Data[idx].Joints[JointType.SpineShoulder].Position.Y / 2));
                     float depthSpine =
-                        (_Data[idx].Joints[JointType.SpineMid].Position.Z);
+                        ((_Data[idx].Joints[JointType.SpineMid].Position.Z / 2) + (_Data[idx].Joints[JointType.SpineShoulder].Position.Z / 2));
 
-                    cowboySpine.transform.position =
+                    modelSpine.transform.position =
                         new Vector3(
                         horizontalSpine * 5,
                         verticalSpine * 5,
@@ -211,13 +210,13 @@ public class cowboyMove : MonoBehaviour {
 
                     //PELVIS
                     float horizontalPelvis =
-                        (_Data[idx].Joints[JointType.SpineBase].Position.X);
+                        ((_Data[idx].Joints[JointType.SpineBase].Position.X / 2) + (_Data[idx].Joints[JointType.SpineMid].Position.X / 2));
                     float verticalPelvis =
-                        (_Data[idx].Joints[JointType.SpineBase].Position.Y);
+                        ((_Data[idx].Joints[JointType.SpineBase].Position.Y / 2) + (_Data[idx].Joints[JointType.SpineMid].Position.Y / 2));
                     float depthPelvis =
-                        (_Data[idx].Joints[JointType.SpineBase].Position.Z);
+                        ((_Data[idx].Joints[JointType.SpineBase].Position.Z / 2) + (_Data[idx].Joints[JointType.SpineMid].Position.Z / 2));
 
-                    cowboyPelvis.transform.position =
+                    modelPelvis.transform.position =
                         new Vector3(
                         horizontalPelvis * 5,
                         verticalPelvis * 5,
@@ -231,7 +230,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthLeftThigh =
                         (_Data[idx].Joints[JointType.HipLeft].Position.Z);
 
-                    cowboyLeftThigh.transform.position =
+                    modelLeftThigh.transform.position =
                         new Vector3(
                         horizontalLeftThigh * 5,
                         verticalLeftThigh * 5,
@@ -244,7 +243,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthRightThigh =
                         (_Data[idx].Joints[JointType.HipRight].Position.Z);
 
-                    cowboyRightThigh.transform.position =
+                    modelRightThigh.transform.position =
                         new Vector3(
                         horizontalRightThigh * 5,
                         verticalRightThigh * 5,
@@ -258,7 +257,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthLeftCalf =
                         (_Data[idx].Joints[JointType.KneeLeft].Position.Z);
 
-                    cowboyLeftCalf.transform.position =
+                    modelLeftCalf.transform.position =
                         new Vector3(
                         horizontalLeftCalf * 5,
                         verticalLeftCalf * 5,
@@ -271,7 +270,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthRightCalf =
                         (_Data[idx].Joints[JointType.KneeRight].Position.Z);
 
-                    cowboyRightCalf.transform.position =
+                    modelRightCalf.transform.position =
                         new Vector3(
                         horizontalRightCalf * 5,
                         verticalRightCalf * 5,
@@ -285,7 +284,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthLeftHeel =
                         (_Data[idx].Joints[JointType.AnkleLeft].Position.Z);
 
-                    cowboyLeftHeel.transform.position =
+                    modelLeftHeel.transform.position =
                         new Vector3(
                         horizontalLeftHeel * 5,
                         verticalLeftHeel * 5,
@@ -298,7 +297,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthRightHeel =
                         (_Data[idx].Joints[JointType.AnkleRight].Position.Z);
 
-                    cowboyRightHeel.transform.position =
+                    modelRightHeel.transform.position =
                         new Vector3(
                         horizontalRightHeel * 5,
                         verticalRightHeel * 5,
@@ -312,7 +311,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthLeftFoot =
                         (_Data[idx].Joints[JointType.AnkleLeft].Position.Z);
 
-                    cowboyLeftFoot.transform.position =
+                    modelLeftFoot.transform.position =
                         new Vector3(
                         horizontalLeftFoot * 5,
                         verticalLeftFoot * 5,
@@ -325,7 +324,7 @@ public class cowboyMove : MonoBehaviour {
                     float depthRightFoot =
                         (_Data[idx].Joints[JointType.AnkleRight].Position.Z);
 
-                    cowboyRightFoot.transform.position =
+                    modelRightFoot.transform.position =
                         new Vector3(
                         horizontalRightFoot * 5,
                         verticalRightFoot * 5,
