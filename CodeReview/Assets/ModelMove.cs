@@ -18,8 +18,8 @@ public class ModelMove : MonoBehaviour {
     public GameObject modelRightCalf;
     public GameObject modelLeftHeel;
     public GameObject modelRightHeel;
-    public GameObject modelLeftFoot;
-    public GameObject modelRightFoot;
+    // public GameObject modelLeftFoot;
+    // public GameObject modelRightFoot;
     public GameObject modelPelvis;
     public GameObject modelSpine;
     //public GameObject modelChest;
@@ -224,11 +224,11 @@ public class ModelMove : MonoBehaviour {
 
                     //HIPS
                     float horizontalLeftThigh =
-                        (_Data[idx].Joints[JointType.HipLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.HipLeft].Position.X / 2) + (_Data[idx].Joints[JointType.KneeLeft].Position.X / 2));
                     float verticalLeftThigh =
-                        (_Data[idx].Joints[JointType.HipLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.HipLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.KneeLeft].Position.Y / 2));
                     float depthLeftThigh =
-                        (_Data[idx].Joints[JointType.HipLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.HipLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.KneeLeft].Position.Z / 2));
 
                     modelLeftThigh.transform.position =
                         new Vector3(
@@ -237,11 +237,11 @@ public class ModelMove : MonoBehaviour {
                         depthLeftThigh * 5);
 
                     float horizontalRightThigh =
-                        (_Data[idx].Joints[JointType.HipRight].Position.X);
+                        ((_Data[idx].Joints[JointType.HipRight].Position.X / 2) + (_Data[idx].Joints[JointType.KneeRight].Position.X / 2));
                     float verticalRightThigh =
-                        (_Data[idx].Joints[JointType.HipRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.HipRight].Position.Y / 2) + (_Data[idx].Joints[JointType.KneeRight].Position.Y / 2));
                     float depthRightThigh =
-                        (_Data[idx].Joints[JointType.HipRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.HipRight].Position.Z / 2) + (_Data[idx].Joints[JointType.KneeRight].Position.Z / 2));
 
                     modelRightThigh.transform.position =
                         new Vector3(
@@ -251,11 +251,11 @@ public class ModelMove : MonoBehaviour {
 
                     //KNEES
                     float horizontalLeftCalf =
-                        (_Data[idx].Joints[JointType.KneeLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.KneeLeft].Position.X / 2) + (_Data[idx].Joints[JointType.AnkleLeft].Position.X / 2));
                     float verticalLeftCalf =
-                        (_Data[idx].Joints[JointType.KneeLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.KneeLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.AnkleLeft].Position.Y / 2));
                     float depthLeftCalf =
-                        (_Data[idx].Joints[JointType.KneeLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.KneeLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.AnkleLeft].Position.Z / 2));
 
                     modelLeftCalf.transform.position =
                         new Vector3(
@@ -264,11 +264,11 @@ public class ModelMove : MonoBehaviour {
                         depthLeftCalf * 5);
 
                     float horizontalRightCalf =
-                        (_Data[idx].Joints[JointType.KneeRight].Position.X);
+                        ((_Data[idx].Joints[JointType.KneeRight].Position.X / 2) + (_Data[idx].Joints[JointType.AnkleRight].Position.X / 2));
                     float verticalRightCalf =
-                        (_Data[idx].Joints[JointType.KneeRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.KneeRight].Position.Y / 2) + (_Data[idx].Joints[JointType.AnkleRight].Position.Y / 2));
                     float depthRightCalf =
-                        (_Data[idx].Joints[JointType.KneeRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.KneeRight].Position.Z / 2) + (_Data[idx].Joints[JointType.AnkleRight].Position.Z / 2));
 
                     modelRightCalf.transform.position =
                         new Vector3(
@@ -278,11 +278,11 @@ public class ModelMove : MonoBehaviour {
 
                     //ANKLES
                     float horizontalLeftHeel =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.X);
+                        ((_Data[idx].Joints[JointType.AnkleLeft].Position.X / 2) + (_Data[idx].Joints[JointType.FootLeft].Position.X / 2));
                     float verticalLeftHeel =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.Y);
+                        ((_Data[idx].Joints[JointType.AnkleLeft].Position.Y / 2) + (_Data[idx].Joints[JointType.FootLeft].Position.Y / 2));
                     float depthLeftHeel =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.Z);
+                        ((_Data[idx].Joints[JointType.AnkleLeft].Position.Z / 2) + (_Data[idx].Joints[JointType.FootLeft].Position.Z / 2));
 
                     modelLeftHeel.transform.position =
                         new Vector3(
@@ -291,11 +291,11 @@ public class ModelMove : MonoBehaviour {
                         depthLeftHeel * 5);
 
                     float horizontalRightHeel =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.X);
+                        ((_Data[idx].Joints[JointType.AnkleRight].Position.X / 2) + (_Data[idx].Joints[JointType.FootRight].Position.X / 2));
                     float verticalRightHeel =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.Y);
+                        ((_Data[idx].Joints[JointType.AnkleRight].Position.Y / 2) + (_Data[idx].Joints[JointType.FootRight].Position.Y / 2));
                     float depthRightHeel =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.Z);
+                        ((_Data[idx].Joints[JointType.AnkleRight].Position.Z / 2) + (_Data[idx].Joints[JointType.FootRight].Position.Z / 2));
 
                     modelRightHeel.transform.position =
                         new Vector3(
@@ -304,31 +304,31 @@ public class ModelMove : MonoBehaviour {
                         depthRightHeel * 5);
 
                     //FEET
-                    float horizontalLeftFoot =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.X);
-                    float verticalLeftFoot =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.Y);
-                    float depthLeftFoot =
-                        (_Data[idx].Joints[JointType.AnkleLeft].Position.Z);
+                    // float horizontalLeftFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleLeft].Position.X);
+                    // float verticalLeftFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleLeft].Position.Y);
+                    // float depthLeftFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleLeft].Position.Z);
 
-                    modelLeftFoot.transform.position =
-                        new Vector3(
-                        horizontalLeftFoot * 5,
-                        verticalLeftFoot * 5,
-                        depthLeftFoot * 5);
+                    // modelLeftFoot.transform.position =
+                    //     new Vector3(
+                    //     horizontalLeftFoot * 5,
+                    //     verticalLeftFoot * 5,
+                    //     depthLeftFoot * 5);
 
-                    float horizontalRightFoot =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.X);
-                    float verticalRightFoot =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.Y);
-                    float depthRightFoot =
-                        (_Data[idx].Joints[JointType.AnkleRight].Position.Z);
+                    // float horizontalRightFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleRight].Position.X);
+                    // float verticalRightFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleRight].Position.Y);
+                    // float depthRightFoot =
+                    //     (_Data[idx].Joints[JointType.AnkleRight].Position.Z);
 
-                    modelRightFoot.transform.position =
-                        new Vector3(
-                        horizontalRightFoot * 5,
-                        verticalRightFoot * 5,
-                        depthRightFoot * 5);
+                    // modelRightFoot.transform.position =
+                    //     new Vector3(
+                    //     horizontalRightFoot * 5,
+                    //     verticalRightFoot * 5,
+                    //     depthRightFoot * 5);
 
                 }
             }

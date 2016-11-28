@@ -7,6 +7,8 @@ public class cowboyMove : MonoBehaviour {
     private KinectSensor _Sensor;
     private BodyFrameReader _Reader;
     private Body[] _Data = null;
+    public GameObject cowboyLeftHandEnd;
+    public GameObject cowboyRightHandEnd;
     public GameObject cowboyLeftHand;
     public GameObject cowboyRightHand;
     public GameObject cowboyLeftForearm;
@@ -72,32 +74,32 @@ public class cowboyMove : MonoBehaviour {
                 if (idx > -1)
                 {
 
-                    //HANDS
-                    float horizontalHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.X);
-                    float verticalHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.Y);
-                    float depthHandLeft =
-                        (_Data[idx].Joints[JointType.WristLeft].Position.Z);
+                    //HANDS-END
+                    float horizontalHandEndLeft =
+                        (_Data[idx].Joints[JointType.HandTipLeft].Position.X);
+                    float verticalHandEndLeft =
+                        (_Data[idx].Joints[JointType.HandTipLeft].Position.Y);
+                    float depthHandEndLeft =
+                        (_Data[idx].Joints[JointType.HandTipLeft].Position.Z);
 
-                    cowboyLeftHand.transform.position =
+                    cowboyLeftHandEnd.transform.position =
                         new Vector3(
-                        horizontalHandLeft * 5,
-                        verticalHandLeft * 5,
-                        depthHandLeft * 5);
+                        horizontalHandEndLeft * 5,
+                        verticalHandEndLeft * 5,
+                        depthHandEndLeft * 5);
 
-                    float horizontalHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.X);
-                    float verticalHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.Y);
-                    float depthHandRight =
-                        (_Data[idx].Joints[JointType.WristRight].Position.Z);
+                    float horizontalHandEndRight =
+                        (_Data[idx].Joints[JointType.HandTipRight].Position.X);
+                    float verticalHandEndRight =
+                        (_Data[idx].Joints[JointType.HandTipRight].Position.Y);
+                    float depthHandEndRight =
+                        (_Data[idx].Joints[JointType.HandTipRight].Position.Z);
 
                     cowboyRightHand.transform.position =
                         new Vector3(
-                        horizontalHandRight * 5,
-                        verticalHandRight * 5,
-                        depthHandRight * 5);
+                        horizontalHandEndRight * 5,
+                        verticalHandEndRight * 5,
+                        depthHandEndRight * 5);
 
                     //ELBOWS
                     float horizontalLeftForearm =
