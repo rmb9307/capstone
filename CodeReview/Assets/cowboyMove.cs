@@ -106,93 +106,93 @@ public class cowboyMove : MonoBehaviour {
                     cowboyLeftHand.transform.position = LeftWrist;
                     cowboyLeftHand.transform.LookAt(LeftHandTip);
                     cowboyLeftHand.transform.Rotate(90, 0, 0);
-                    cowboyLeftHand.transform.Rotate(0, -90, 0);
+                    //cowboyLeftHand.transform.Rotate(0, -90, 0);
 
                     cowboyRightHand.transform.position = RightWrist;
                     cowboyRightHand.transform.LookAt(RightHandTip);
                     cowboyRightHand.transform.Rotate(90, 0, 0);
-                    cowboyRightHand.transform.Rotate(0, -90, 0);
+                    //cowboyRightHand.transform.Rotate(0, -90, 0);
 
                     cowboyLeftForearm.transform.position = LeftElbow;
                     cowboyLeftForearm.transform.LookAt(LeftWrist);
                     cowboyLeftForearm.transform.Rotate(90, 0, 0);
-                    cowboyLeftForearm.transform.Rotate(0, -90, 0);
+                    //cowboyLeftForearm.transform.Rotate(0, -90, 0);
 
                     cowboyRightForearm.transform.position = RightElbow;
                     cowboyRightForearm.transform.LookAt(RightWrist);
                     cowboyRightForearm.transform.Rotate(90, 0, 0);
-                    cowboyRightForearm.transform.Rotate(0, -90, 0);
+                    //cowboyRightForearm.transform.Rotate(0, -90, 0);
 
                     cowboyLeftUpperarm.transform.position = LeftShoulder;
                     cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyLeftUpperarm.transform.Rotate(90, 0, 0);
-                    cowboyLeftUpperarm.transform.Rotate(0, -90, 0);
+                    //cowboyLeftUpperarm.transform.Rotate(0, -90, 0);
 
                     cowboyRightUpperarm.transform.position = RightShoulder;
                     cowboyRightUpperarm.transform.LookAt(RightElbow);
                     cowboyRightUpperarm.transform.Rotate(90, 0, 0);
-                    cowboyRightUpperarm.transform.Rotate(0, -90, 0);
+                    //cowboyRightUpperarm.transform.Rotate(0, -90, 0);
 
                     cowboyLeftShoulder.transform.position = SpineShoulder;
                     cowboyLeftShoulder.transform.LookAt(LeftShoulder);
                     cowboyLeftShoulder.transform.Rotate(90, 0, 0);
-                    cowboyLeftShoulder.transform.Rotate(0, -90, 0);
+                    //cowboyLeftShoulder.transform.Rotate(0, -90, 0);
 
                     cowboyRightShoulder.transform.position = SpineShoulder;
                     cowboyRightShoulder.transform.LookAt(RightShoulder);
                     cowboyRightShoulder.transform.Rotate(90, 0, 0);
-                    cowboyRightShoulder.transform.Rotate(0, -90, 0);
+                    //cowboyRightShoulder.transform.Rotate(0, -90, 0);
 
                     cowboyChest.transform.position = SpineShoulder;
                     cowboyChest.transform.LookAt(Neck);
                     cowboyChest.transform.Rotate(90, 0, 0);
-                    cowboyChest.transform.Rotate(0, -90, 0);
+                    //cowboyChest.transform.Rotate(0, -90, 0);
 
                     cowboyNeck.transform.position = Neck;
                     cowboyNeck.transform.LookAt(Head);
                     cowboyNeck.transform.Rotate(90, 0, 0);
-                    cowboyNeck.transform.Rotate(0, -90, 0);
+                    //cowboyNeck.transform.Rotate(0, -90, 0);
 
 
                     cowboySpine.transform.position = SpineMid;
                     cowboySpine.transform.LookAt(SpineShoulder);
                     cowboySpine.transform.Rotate(90, 0, 0);
-                    cowboySpine.transform.Rotate(0, -90, 0);
+                    //cowboySpine.transform.Rotate(0, -90, 0);
 
                     cowboyPelvis.transform.position = SpineBase;
                     cowboyPelvis.transform.LookAt(SpineMid);
                     cowboyPelvis.transform.Rotate(90, 0, 0);
-                    cowboyPelvis.transform.Rotate(0, -90, 0);
+                    //cowboyPelvis.transform.Rotate(0, -90, 0);
 
                     cowboyLeftThigh.transform.position = LeftHip;
                     cowboyLeftThigh.transform.LookAt(LeftKnee);
                     cowboyLeftThigh.transform.Rotate(90, 0, 0);
-                    cowboyLeftThigh.transform.Rotate(0, -90, 0);
+                    //cowboyLeftThigh.transform.Rotate(0, -90, 0);
 
                     cowboyRightThigh.transform.position = RightHip;
                     cowboyRightThigh.transform.LookAt(RightKnee);
                     cowboyRightThigh.transform.Rotate(90, 0, 0);
-                    cowboyRightThigh.transform.Rotate(0, -90, 0);
+                    //cowboyRightThigh.transform.Rotate(0, -90, 0);
 
                     cowboyLeftCalf.transform.position = LeftKnee;
                     cowboyLeftCalf.transform.LookAt(LeftAnkle);
                     cowboyLeftCalf.transform.Rotate(90, 0, 0);
-                    cowboyLeftCalf.transform.Rotate(0, -90, 0);
+                    //cowboyLeftCalf.transform.Rotate(0, -90, 0);
 
                     cowboyRightCalf.transform.position = RightKnee;
                     cowboyRightCalf.transform.LookAt(RightAnkle);
                     cowboyRightCalf.transform.Rotate(90, 0, 0);
-                    cowboyRightCalf.transform.Rotate(0, -90, 0);
+                    //cowboyRightCalf.transform.Rotate(0, -90, 0);
 
                     cowboyLeftHeel.transform.position = LeftAnkle;
                     cowboyLeftHeel.transform.LookAt(LeftFoot);
                     cowboyLeftHeel.transform.Rotate(90, 0, 0);
-                    cowboyLeftHeel.transform.Rotate(0, -90, 0);
+                    //cowboyLeftHeel.transform.Rotate(0, -90, 0);
 
                     cowboyRightHeel.transform.position = RightAnkle;
                     cowboyRightHeel.transform.LookAt(LeftFoot);
                     cowboyRightHeel.transform.Rotate(90, 0, 0);
-                    cowboyRightHeel.transform.Rotate(0, -90, 0);
+                    //cowboyRightHeel.transform.Rotate(0, -90, 0);
                 }
             }
         }
