@@ -144,6 +144,8 @@ public class BodySourceView : MonoBehaviour
         {
             Kinect.Joint sourceJoint = body.Joints[jt];
             Kinect.Joint? targetJoint = null;
+
+            GameObject boneObj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             
             if(_BoneMap.ContainsKey(jt))
             {
@@ -156,6 +158,10 @@ public class BodySourceView : MonoBehaviour
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
+                //float boneDistance = Vector3.Distance(jointObj.localPosition,GetVector3FromJoint(targetJoint.Value));
+                boneObj.transform.position = jointObj.localPosition;
+                boneObj.transform.LookAt(GetVector3FromJoint(targetJoint.Value));
+                //boneObj.transform.localScale.z = boneDistance;
                 lr.SetPosition(0, jointObj.localPosition);
                 lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
                 lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
