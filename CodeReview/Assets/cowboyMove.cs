@@ -112,32 +112,50 @@ public class cowboyMove : MonoBehaviour {
                     cowboyRightHandEnd.transform.position = RightHandTip;
 
                     cowboyLeftHand.transform.position = LeftWrist;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightHand.transform.position = RightWrist;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftForearm.transform.position = LeftElbow;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightForearm.transform.position = RightElbow;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftUpperarm.transform.position = LeftShoulder;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightUpperarm.transform.position = RightShoulder;
+                    cowboyLeftUpperarm.transform.LookAt(RightElbow);
 
                     cowboyLeftShoulder.transform.position = SpineShoulder;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightShoulder.transform.position = SpineShoulder;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyChest.transform.position = SpineShoulder;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyNeck.transform.position = Neck;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyHead.transform.position = Head;
 
                     cowboySpine.transform.position = SpineMid;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyPelvis.transform.position = SpineBase;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftThigh.transform.position = LeftHip;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightThigh.transform.position = RightHip;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftCalf.transform.position = LeftKnee;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightCalf.transform.position = RightKnee;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftHeel.transform.position = LeftAnkle;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
                     cowboyRightHeel.transform.position = RightAnkle;
+                    cowboyLeftUpperarm.transform.LookAt(LeftElbow);
 
                     cowboyLeftFoot.transform.position = LeftFoot;
                     cowboyRightFoot.transform.position = RightFoot;
