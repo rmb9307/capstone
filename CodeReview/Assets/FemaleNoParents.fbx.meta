@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: b337db2477a3e1542bfe3589fad74814
+timeCreated: 1480394046
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: AnkleLeft
+    100002: AnkleRight
+    100004: Camera
+    100006: Cube
+    100008: ElbowLeft
+    100010: ElbowLeft_end
+    100012: ElbowRight
+    100014: ElbowRight_end
+    100016: //RootNode
+    100018: HandLeft
+    100020: HandRight
+    100022: Head
+    100024: HeadTop
+    100026: HeadTop_end
+    100028: HipLeft
+    100030: HipLeft_end
+    100032: HipRight
+    100034: HipRight_end
+    100036: KneeLeft
+    100038: KneeLeft_end
+    100040: KneeRight
+    100042: KneeRight_end
+    100044: Lamp
+    100046: metarig.001
+    100048: Neck
+    100050: Neck_end
+    100052: ShoulderLeft
+    100054: ShoulderLeft_end
+    100056: ShoulderRight
+    100058: ShoulderRight_end
+    100060: SpineBase
+    100062: SpineBase_end
+    100064: SpineMid
+    100066: SpineMid_end
+    100068: TipLeft
+    100070: TipLeft_end
+    100072: TipRight
+    100074: TipRight_end
+    100076: ToeLeft
+    100078: ToeLeft_end
+    100080: ToeRight
+    100082: ToeRight_end
+    100084: WristLeft
+    100086: WristLeft_end
+    100088: WristRight
+    100090: WristRight_end
+    100092: AnkleLeft_end
+    100094: AnkleRight_end
+    100096: HandLeft_end
+    100098: HandRight_end
+    100100: Head_end
+    400000: AnkleLeft
+    400002: AnkleRight
+    400004: Camera
+    400006: Cube
+    400008: ElbowLeft
+    400010: ElbowLeft_end
+    400012: ElbowRight
+    400014: ElbowRight_end
+    400016: //RootNode
+    400018: HandLeft
+    400020: HandRight
+    400022: Head
+    400024: HeadTop
+    400026: HeadTop_end
+    400028: HipLeft
+    400030: HipLeft_end
+    400032: HipRight
+    400034: HipRight_end
+    400036: KneeLeft
+    400038: KneeLeft_end
+    400040: KneeRight
+    400042: KneeRight_end
+    400044: Lamp
+    400046: metarig.001
+    400048: Neck
+    400050: Neck_end
+    400052: ShoulderLeft
+    400054: ShoulderLeft_end
+    400056: ShoulderRight
+    400058: ShoulderRight_end
+    400060: SpineBase
+    400062: SpineBase_end
+    400064: SpineMid
+    400066: SpineMid_end
+    400068: TipLeft
+    400070: TipLeft_end
+    400072: TipRight
+    400074: TipRight_end
+    400076: ToeLeft
+    400078: ToeLeft_end
+    400080: ToeRight
+    400082: ToeRight_end
+    400084: WristLeft
+    400086: WristLeft_end
+    400088: WristRight
+    400090: WristRight_end
+    400092: AnkleLeft_end
+    400094: AnkleRight_end
+    400096: HandLeft_end
+    400098: HandRight_end
+    400100: Head_end
+    4300000: Cube
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
