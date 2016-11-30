@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Basketball Court.unity
+- path: Assets/Scenes/Yoga Studio.unity
   isLoaded: 1
   isActive: 1
