@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: d880084d355158b468aa06bf7c633654
+timeCreated: 1480348472
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - cowboyLeftHand: {instanceID: 0}
+  - cowboyRightHand: {instanceID: 0}
+  - cowboyLeftForearm: {instanceID: 0}
+  - cowboyRightForearm: {instanceID: 0}
+  - cowboyLeftUpperarm: {instanceID: 0}
+  - cowboyRightUpperarm: {instanceID: 0}
+  - cowboyLeftThigh: {instanceID: 0}
+  - cowboyRightThigh: {instanceID: 0}
+  - cowboyLeftCalf: {instanceID: 0}
+  - cowboyRightCalf: {instanceID: 0}
+  - cowboyLeftFoot: {instanceID: 0}
+  - cowboyRightFoot: {instanceID: 0}
+  - cowboyPelvis: {instanceID: 0}
+  - cowboySpine: {instanceID: 0}
+  - cowboyNeck: {instanceID: 0}
+  - cowboyHead: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
