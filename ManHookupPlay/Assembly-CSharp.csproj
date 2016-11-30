@@ -60,7 +60,6 @@
      <Compile Include="Assets\KinectView\Scripts\VideoFrameDataContainer.cs" />
      <Compile Include="Assets\KinectView\Scripts\VideoReader.cs" />
      <Compile Include="Assets\cowboyMove.cs" />
-     <None Include="Assets\jointypes.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

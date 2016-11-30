@@ -6,6 +6,7 @@ using Kinect = Windows.Kinect;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System;
 
 public class BodySourceView : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class BodySourceView : MonoBehaviour
     };
 
     enum Mode { Recording, Playing };
-    private Mode mode = Mode.Recording;
+    private Mode mode = Mode.Playing;
 
     void Update () 
     {
@@ -126,9 +127,56 @@ public class BodySourceView : MonoBehaviour
         }
         else
         {
-            // ReadNextFrame(body);   
+            if (loadedRecording == null)
+            {
+                loadedRecording = LoadRecording();
+                frameNo = 0;
+            }
+
+            if (tick++ % 10 != 0)
+            {
+                return;
+            }
+
+            if (loadedRecording.frames.Count <= frameNo)
+            {
+                Debug.Log("Restarting playback from frame 0.");
+                frameNo = 0;
+            }
+
+            Debug.Log("Frame " + frameNo);
+            var frame = loadedRecording.frames[frameNo++];
+            Debug.Log(frame.bodies.Count + " bodies in frame number " + frameNo);
+
+            foreach (var body in _Bodies)
+            {
+                var trackingId = body.Key;
+                if (frame.bodies.Find(b => b.TrackingId == trackingId) == null)
+                {
+                    // Dispose of the body.
+                    Destroy(_Bodies[trackingId]);
+                    _Bodies.Remove(trackingId);
+                }
+            }
+
+            foreach (var body in frame.bodies)
+            {
+                if (!_Bodies.ContainsKey(body.TrackingId))
+                {
+                    Debug.Log("Creating body" + body.TrackingId);
+                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                }
+                RefreshBodyRecordedData(body, _Bodies[body.TrackingId]);
+            }
+            // ReadNextFrame(body);  
+            Debug.Log("HI");
+            
+
         }
     }
+
+    private int frameNo;
+    private int tick = 0;
 
     private BodyRecording.Frame frame;
     private void NewFrame()
@@ -146,8 +194,10 @@ public class BodySourceView : MonoBehaviour
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
             var vec = GetVector3FromJoint(body.Joints[jt]);
-            xmlBody.JointPositions[(int)jt] = vec;
+            xmlBody.Joints[(int)jt].Position = vec;
+            xmlBody.Joints[(int)jt].Name = jt.ToString();
         }
+        xmlBody.TrackingId = body.TrackingId;
         return xmlBody;
     }
 
@@ -162,13 +212,26 @@ public class BodySourceView : MonoBehaviour
         }
     }
 
+    private BodyRecording loadedRecording = null;
+
+    private BodyRecording LoadRecording()
+    {
+        string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
+        using (var stream = new FileStream(filename, FileMode.Open))
+        {
+            Debug.Log("Reading " + filename); 
+            var recording = serializer.Deserialize(stream) as BodyRecording ;
+            Debug.Log("Loaded a recording with " + recording.frames.Count + " frames.");
+            Debug.Log("First x coordinate: " + recording.frames[0].bodies[0].Joints[0].Position.x);
+            return recording;
+        }
+    }
+
 
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
 
-        //var jointTypeCollection = JointTypeContainer.Load(Path.Combine(Application.dataPath, "jointypes.xml"));
-        //var xmlData = ""; 
 
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
@@ -186,26 +249,56 @@ public class BodySourceView : MonoBehaviour
             jointObj.transform.localScale = new Vector3(scale, scale, scale);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
-
-            //xmlData = @"<JointTypeCollection><JointTypesXML><JointTypeNameXML>" + jt + "</JointTypeNameXML></JointTypesXML></JointTypeCollectionXML>";
       
 
             
         }
 
-        //Debug.Log(xmlData);
-        //var jointTypeCollection2 = JointTypeContainer.LoadFromText(xmlData);
-
-        //Debug.Log(jointTypeCollection);
-        //Debug.Log(jointTypeCollection2);
-
-        //jointTypeCollection.Save(Path.Combine(Application.persistentDataPath, "jointypes.xml"));
 
 
         return body;
     }
 
+    private void RefreshBodyRecordedData(BodyRecording.Frame.Body body, GameObject bodyObject)
+    {
+        Debug.Log("RefreshBodyRecordedData entered");  Debug.Log(body); Debug.Log(bodyObject);
+        var joints = body.Joints;
+        Debug.Log(joints);
 
+        var bones = new Dictionary<Kinect.JointType, BodyRecording.Frame.Body.Joint>();
+        foreach (var joint in joints)
+        {
+            Kinect.JointType jt = (Kinect.JointType)Enum.Parse(typeof(Kinect.JointType), joint.Name);
+            bones[jt] = joint;
+        }
+
+        foreach (var bone in bones) {
+            var type = bone.Key;
+            var joint = bone.Value;
+
+            BodyRecording.Frame.Body.Joint targetJoint = null;
+            if (_BoneMap.ContainsKey(type))
+            {
+                targetJoint = bones[_BoneMap[type]];
+            }
+
+            Vector3 position = joint.Position;
+            Transform jointObj = bodyObject.transform.FindChild(joint.Name);
+            jointObj.localPosition = position;
+
+            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            if (targetJoint != null)
+            {
+                lr.SetPosition(0, jointObj.localPosition);
+                lr.SetPosition(1, targetJoint.Position);
+                lr.SetColors(GetColorForState(Kinect.TrackingState.Tracked), GetColorForState(Kinect.TrackingState.Tracked));
+            } else
+            {
+                lr.enabled = false;
+            }
+        }
+        
+    }
 
     private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
     {

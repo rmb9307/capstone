@@ -5,8 +5,8 @@ using Kinect = Windows.Kinect;
 
 using System.Xml.Serialization;
 using System.Xml;
-using System.IO; 
-
+using System.IO;
+using System.Linq;
 
 [XmlRoot("BodyRecording")]
 public class BodyRecording
@@ -23,11 +23,21 @@ public class BodyRecording
 
         public class Body
         {
-            [XmlArray("JointPositions")]
-            [XmlArrayItem("JointPosition")]
-            public Vector3[] JointPositions = new Vector3[(int)Kinect.JointType.ThumbRight + 1];
-
+            [XmlArray("Joints")]
+            [XmlArrayItem("Joint")]
+            public Joint[] Joints = Enumerable
+                .Range(0, (int) Kinect.JointType.ThumbRight + 1)
+                .Select(i => new Joint())
+                .ToArray();
+ 
             public ulong TrackingId;
+
+            public class Joint
+            {
+                public string Name;
+                public Vector3 Position;
+            }
+
         }
     };
     //public void Save(string path)
