@@ -236,11 +236,12 @@ public class BodySourceView : MonoBehaviour
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject boneObj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             
-            LineRenderer lr = jointObj.AddComponent<LineRenderer>();
-            lr.SetVertexCount(2);
-            lr.material = BoneMaterial;
-            lr.SetWidth(0.5f, 0.5f);
+            // LineRenderer lr = jointObj.AddComponent<LineRenderer>();
+            // lr.SetVertexCount(2);
+            // lr.material = BoneMaterial;
+            // lr.SetWidth(0.5f, 0.5f);
 
             float scale = 2f;
             if (jointSizes.ContainsKey(jt)) {
@@ -249,6 +250,10 @@ public class BodySourceView : MonoBehaviour
             jointObj.transform.localScale = new Vector3(scale, scale, scale);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
+
+            boneObj.name = jointObj.name + "Bone";
+            boneObj.transform.parent = body.transform;
+            boneObj.transform.localScale -= new Vector3 (0.5F, 0, 0.5F);
       
 
             
@@ -276,6 +281,8 @@ public class BodySourceView : MonoBehaviour
             var type = bone.Key;
             var joint = bone.Value;
 
+            GameObject currentBone = GameObject.Find(joint.Name + "Bone");
+
             BodyRecording.Frame.Body.Joint targetJoint = null;
             if (_BoneMap.ContainsKey(type))
             {
@@ -289,12 +296,28 @@ public class BodySourceView : MonoBehaviour
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if (targetJoint != null)
             {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, targetJoint.Position);
-                lr.SetColors(GetColorForState(Kinect.TrackingState.Tracked), GetColorForState(Kinect.TrackingState.Tracked));
-            } else
+                //set postion to average joint position of two joint positions
+                currentBone.transform.position = (jointObj.localPosition + targetJoint.Position) / 2;
+
+                //look at next joint with z then rotate so that x is looking at ut
+                currentBone.transform.LookAt(targetJoint.Position);
+                currentBone.transform.Rotate(new Vector3 (90, 0, 0));
+
+                //scale to appropriatelengeth
+                float boneDistance = Vector3.Distance(jointObj.localPosition,targetJoint.Position);
+                //create absolute value of distance
+                if (boneDistance < 0) {
+                    boneDistance *= -1;
+                }
+                currentBone.transform.localScale = new Vector3 (0.5F, boneDistance / 2, 0.5F);
+                // lr.SetPosition(0, jointObj.localPosition);
+                // lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                // lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+            }
+            else
             {
-                lr.enabled = false;
+                // lr.enabled = false;
+                Destroy (currentBone);
             }
         }
         
@@ -306,6 +329,8 @@ public class BodySourceView : MonoBehaviour
         {
             Kinect.Joint sourceJoint = body.Joints[jt];
             Kinect.Joint? targetJoint = null;
+
+            GameObject currentBone = GameObject.Find(jt + "Bone");
             
             if(_BoneMap.ContainsKey(jt))
             {
@@ -317,16 +342,31 @@ public class BodySourceView : MonoBehaviour
             jointObj.localPosition = vec;
 
             
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            // LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                //set postion to average joint position of two joint positions
+                currentBone.transform.position = (jointObj.localPosition + GetVector3FromJoint(targetJoint.Value)) / 2;
+
+                //look at next joint with z then rotate so that x is looking at ut
+                currentBone.transform.LookAt(GetVector3FromJoint(targetJoint.Value));
+                currentBone.transform.Rotate(new Vector3 (90, 0, 0));
+
+                //scale to appropriatelengeth
+                float boneDistance = Vector3.Distance(jointObj.localPosition,GetVector3FromJoint(targetJoint.Value));
+                //create absolute value of distance
+                if (boneDistance < 0) {
+                    boneDistance *= -1;
+                }
+                currentBone.transform.localScale = new Vector3 (0.5F, boneDistance / 2, 0.5F);
+                // lr.SetPosition(0, jointObj.localPosition);
+                // lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                // lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
             }
             else
             {
-                lr.enabled = false;
+                // lr.enabled = false;
+                Destroy (currentBone);
             }
         }
        
