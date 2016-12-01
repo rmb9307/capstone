@@ -15,6 +15,11 @@ public class BodySourceView : MonoBehaviour
     public Material BoneMaterial;
     public GameObject BodySourceManager;
     public Dropdown ModeDropdown;
+    public Dropdown SceneDropdown;
+    public GameObject YogaStudio;
+    public GameObject BasketballCourt;
+    public GameObject Gym;
+
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
@@ -60,19 +65,42 @@ public class BodySourceView : MonoBehaviour
     enum Mode { Recording, Playing, Live };
     private Mode mode = Mode.Recording;
     private bool actuallyRecord = true;
+   
+
     void Update () 
     {
+        int selectedRoom = SceneDropdown.value;
+        if(selectedRoom == 0)
+        {
+            Gym.gameObject.SetActive(false);
+            BasketballCourt.gameObject.SetActive(false);
+            YogaStudio.gameObject.SetActive (true);
+
+        }
+        if (selectedRoom == 1)
+        {
+            Gym.gameObject.SetActive(false);
+            YogaStudio.gameObject.SetActive(false);
+            BasketballCourt.gameObject.SetActive(true);
+        }
+        if (selectedRoom == 2)
+        {
+            YogaStudio.gameObject.SetActive(false);
+            BasketballCourt.gameObject.SetActive(false);
+            Gym.gameObject.SetActive(true);
+        }
+       
         int selectedIdx = ModeDropdown.value;
-        if (selectedIdx == 0)
+        if (selectedIdx == 1)
         {
             mode = Mode.Recording;
             actuallyRecord = true;
         }
-        else if (selectedIdx == 1)
+        else if (selectedIdx == 2)
         {
             mode = Mode.Playing;
         }
-        else if (selectedIdx == 2)
+        else if (selectedIdx == 0)
         {
             mode = Mode.Live;
             actuallyRecord = false;
