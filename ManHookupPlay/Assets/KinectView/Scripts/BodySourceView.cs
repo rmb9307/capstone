@@ -219,8 +219,11 @@ public class BodySourceView : MonoBehaviour
                 if (modelCounter == 0)
                 {
                     GameObject model = GameObject.Find("FemaleOriginal");
-                    model.GetComponent<cowboyMove>().moveModelWithRecord(body);
-                    modelCounter++;
+                    if (model != null)
+                    {
+                        model.GetComponent<cowboyMove>().moveModelWithRecord(body);
+                        modelCounter++;
+                    }
                 }
             }
             // ReadNextFrame(body);  
@@ -353,7 +356,7 @@ public class BodySourceView : MonoBehaviour
             jointObj.localPosition = position;
 
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if (targetJoint != null)
+            if (targetJoint != null && currentBone != null)
             {
                 //set postion to average joint position of two joint positions
                 currentBone.transform.position = (jointObj.localPosition + targetJoint.Position) / 2;
