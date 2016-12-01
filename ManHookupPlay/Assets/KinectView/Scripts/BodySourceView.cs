@@ -59,7 +59,7 @@ public class BodySourceView : MonoBehaviour
 
     enum Mode { Recording, Playing, Live };
     private Mode mode = Mode.Recording;
-    private bool actuallyRecord = false;
+    private bool actuallyRecord = true;
     void Update () 
     {
         int selectedIdx = ModeDropdown.value;
@@ -178,6 +178,8 @@ public class BodySourceView : MonoBehaviour
                 }
             }
 
+            int modelCounter = 0;
+
             foreach (var body in frame.bodies)
             {
                 if (!_Bodies.ContainsKey(body.TrackingId))
@@ -186,6 +188,12 @@ public class BodySourceView : MonoBehaviour
                     _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 }
                 RefreshBodyRecordedData(body, _Bodies[body.TrackingId]);
+                if (modelCounter == 0)
+                {
+                    GameObject model = GameObject.Find("FemaleOriginal");
+                    model.GetComponent<cowboyMove>().moveModelWithRecord(body);
+                    modelCounter++;
+                }
             }
             // ReadNextFrame(body);  
             Debug.Log("HI");
