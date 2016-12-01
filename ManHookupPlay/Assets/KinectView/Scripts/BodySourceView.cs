@@ -58,8 +58,8 @@ public class BodySourceView : MonoBehaviour
     };
 
     enum Mode { Recording, Playing, Live };
-    private Mode mode = Mode.Recording;
-    private bool actuallyRecord = true;
+    private Mode mode = Mode.Playing;
+    private bool actuallyRecord = false;
     void Update () 
     {
         int selectedIdx = ModeDropdown.value;
@@ -187,12 +187,18 @@ public class BodySourceView : MonoBehaviour
                     Debug.Log("Creating body" + body.TrackingId);
                     _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 }
+                Debug.Log(body);
                 RefreshBodyRecordedData(body, _Bodies[body.TrackingId]);
                 if (modelCounter == 0)
                 {
+                    Debug.Log("made it to right before calling function");
                     GameObject model = GameObject.Find("FemaleOriginal");
-                    model.GetComponent<cowboyMove>().moveModelWithRecord(body);
-                    modelCounter++;
+                    Debug.Log(model);
+                    if (model != null)
+                    {
+                        model.GetComponent<cowboyMove>().moveModelWithRecord(body);
+                        modelCounter++;
+                    }
                 }
             }
             // ReadNextFrame(body);  
@@ -324,8 +330,10 @@ public class BodySourceView : MonoBehaviour
             Transform jointObj = bodyObject.transform.FindChild(joint.Name);
             jointObj.localPosition = position;
 
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if (targetJoint != null)
+            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+
+            Debug.Log(currentBone);
+            if (targetJoint != null && currentBone != null)
             {
                 //set postion to average joint position of two joint positions
                 currentBone.transform.position = (jointObj.localPosition + targetJoint.Position) / 2;
