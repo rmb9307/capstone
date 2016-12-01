@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Kinect = Windows.Kinect;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 using System.Xml.Serialization;
 using System.Xml;
@@ -12,6 +14,7 @@ public class BodySourceView : MonoBehaviour
 {
     public Material BoneMaterial;
     public GameObject BodySourceManager;
+    public Dropdown ModeDropdown;
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
@@ -54,12 +57,28 @@ public class BodySourceView : MonoBehaviour
 
     };
 
-    enum Mode { Recording, Playing };
+    enum Mode { Recording, Playing, Live };
     private Mode mode = Mode.Recording;
-
+    private bool actuallyRecord = false;
     void Update () 
     {
-        if (mode == Mode.Recording) {
+        int selectedIdx = ModeDropdown.value;
+        if (selectedIdx == 0)
+        {
+            mode = Mode.Recording;
+            actuallyRecord = true;
+        }
+        else if (selectedIdx == 1)
+        {
+            mode = Mode.Playing;
+        }
+        else if (selectedIdx == 2)
+        {
+            mode = Mode.Live;
+            actuallyRecord = false;
+        }
+
+            if (mode == Mode.Recording || mode== Mode.Live) {
             if (BodySourceManager == null)
             {
                 return;
@@ -200,8 +219,8 @@ public class BodySourceView : MonoBehaviour
         xmlBody.TrackingId = body.TrackingId;
         return xmlBody;
     }
-
-    private bool actuallyRecord = false;
+   
+   
 
     private void WriteFrame()
     {
