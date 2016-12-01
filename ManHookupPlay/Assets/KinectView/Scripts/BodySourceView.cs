@@ -59,7 +59,7 @@ public class BodySourceView : MonoBehaviour
 
     enum Mode { Recording, Playing, Live };
     private Mode mode = Mode.Recording;
-    private bool actuallyRecord = false;
+    private bool actuallyRecord = true;
     void Update () 
     {
         int selectedIdx = ModeDropdown.value;
