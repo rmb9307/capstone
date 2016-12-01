@@ -55,7 +55,7 @@ public class BodySourceView : MonoBehaviour
     };
 
     enum Mode { Recording, Playing };
-    private Mode mode = Mode.Playing;
+    private Mode mode = Mode.Recording;
 
     void Update () 
     {
@@ -201,8 +201,12 @@ public class BodySourceView : MonoBehaviour
         return xmlBody;
     }
 
+    private bool actuallyRecord = false;
+
     private void WriteFrame()
     {
+        if (!actuallyRecord) return;
+
         string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
         using (var stream = new FileStream(filename, FileMode.OpenOrCreate))
         {
