@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: a695548df2b08c24e8a4a702c1142217
+timeCreated: 1480704339
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_end
+    100006: Camera
+    100008: Chest
+    100010: Chest_end
+    100012: Cube
+    100014: Lamp
+    100016: leftFoot
+    100018: leftFoot_end
+    100020: leftForeArm
+    100022: LeftHand
+    100024: LeftHand_end
+    100026: leftShin
+    100028: leftThigh
+    100030: leftThigh.001
+    100032: leftUpperArm
+    100034: leftUpperArm.001
+    100036: //RootNode
+    100038: Neck
+    100040: rightFoot
+    100042: rightFoot_end
+    100044: rightForeArm
+    100046: rightHand
+    100048: rightHand_end
+    100050: rightShin
+    100052: rightThigh
+    100054: rightThigh.001
+    100056: rightUpperArm
+    100058: rightUpperArm.001
+    100060: Stomach/Abs
+    100062: Stomach/Abs_end
+    100064: Head
+    100066: Head_end
+    100068: leftHip
+    100070: leftShoulder
+    100072: rightShoulder
+    100074: rihgtHip
+    100076: rightHip
+    100078: leftHand
+    100080: leftHand_end
+    400000: Armature
+    400002: Bone
+    400004: Bone_end
+    400006: Camera
+    400008: Chest
+    400010: Chest_end
+    400012: Cube
+    400014: Lamp
+    400016: leftFoot
+    400018: leftFoot_end
+    400020: leftForeArm
+    400022: LeftHand
+    400024: LeftHand_end
+    400026: leftShin
+    400028: leftThigh
+    400030: leftThigh.001
+    400032: leftUpperArm
+    400034: leftUpperArm.001
+    400036: //RootNode
+    400038: Neck
+    400040: rightFoot
+    400042: rightFoot_end
+    400044: rightForeArm
+    400046: rightHand
+    400048: rightHand_end
+    400050: rightShin
+    400052: rightThigh
+    400054: rightThigh.001
+    400056: rightUpperArm
+    400058: rightUpperArm.001
+    400060: Stomach/Abs
+    400062: Stomach/Abs_end
+    400064: Head
+    400066: Head_end
+    400068: leftHip
+    400070: leftShoulder
+    400072: rightShoulder
+    400074: rihgtHip
+    400076: rightHip
+    400078: leftHand
+    400080: leftHand_end
+    4300000: Cube
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
