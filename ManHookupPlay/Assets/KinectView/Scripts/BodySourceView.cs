@@ -19,6 +19,10 @@ public class BodySourceView : MonoBehaviour
     public GameObject YogaStudio;
     public GameObject BasketballCourt;
     public GameObject Gym;
+    public Dropdown ModelDropdown;
+    public GameObject Female;
+    public GameObject Ogre;
+    public GameObject Male;
 
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
@@ -69,6 +73,7 @@ public class BodySourceView : MonoBehaviour
 
     void Update () 
     {
+        //getting values from scene dropdown and setting visibility
         int selectedRoom = SceneDropdown.value;
         if(selectedRoom == 0)
         {
@@ -89,7 +94,41 @@ public class BodySourceView : MonoBehaviour
             BasketballCourt.gameObject.SetActive(false);
             Gym.gameObject.SetActive(true);
         }
-       
+
+        //getting values from model dropdown and setting visibility of those models
+        int selectedModel = ModelDropdown.value;
+        bool showBubble = false;
+        GameObject activeModel = null;
+        if (selectedModel == 0)
+        {
+            showBubble = true;
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(false);
+            activeModel = null;
+        }
+        if (selectedModel == 1)
+        {
+            Female.gameObject.SetActive(true);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(false);
+            activeModel = Female;
+        }
+        if (selectedModel == 2)
+        {
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(true);
+            activeModel = Male;
+        }
+        if (selectedModel == 3)
+        {
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(true);
+            Male.gameObject.SetActive(false);
+            activeModel = Ogre;
+        }
+        //getting values from mode dropdown ans setting play/record/live
         int selectedIdx = ModeDropdown.value;
         if (selectedIdx == 1)
         {
@@ -195,6 +234,12 @@ public class BodySourceView : MonoBehaviour
             var frame = loadedRecording.frames[frameNo++];
             Debug.Log(frame.bodies.Count + " bodies in frame number " + frameNo);
 
+            GameObject[] bubbles = GameObject.FindGameObjectsWithTag("bubbleBody");
+            foreach (var bub in bubbles)
+            {
+               bub.gameObject.SetActive(showBubble);
+            }
+
             foreach (var body in _Bodies)
             {
                 var trackingId = body.Key;
@@ -218,10 +263,9 @@ public class BodySourceView : MonoBehaviour
                 RefreshBodyRecordedData(body, _Bodies[body.TrackingId]);
                 if (modelCounter == 0)
                 {
-                    GameObject model = GameObject.Find("FemaleOriginal");
-                    if (model != null)
+                    if (activeModel != null)
                     {
-                        model.GetComponent<cowboyMove>().moveModelWithRecord(body);
+                        activeModel.GetComponent<cowboyMove>().moveModelWithRecord(body);
                         modelCounter++;
                     }
                 }
@@ -293,7 +337,7 @@ public class BodySourceView : MonoBehaviour
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
-
+        body.tag = "bubbleBody";
 
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
@@ -355,7 +399,7 @@ public class BodySourceView : MonoBehaviour
             Transform jointObj = bodyObject.transform.FindChild(joint.Name);
             jointObj.localPosition = position;
 
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if (targetJoint != null && currentBone != null)
             {
                 //set postion to average joint position of two joint positions
@@ -452,5 +496,10 @@ public class BodySourceView : MonoBehaviour
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+    }
+
+    private void tagBubbles ()
+    {
+
     }
 }
