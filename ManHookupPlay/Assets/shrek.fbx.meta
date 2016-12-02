@@ -33,6 +33,8 @@ ModelImporter:
     100050: Shrek
     100052: //RootNode
     100054: Thorax
+    100056: Bone.004
+    100058: Bone.004_end
     400000: Armature
     400002: Camera
     400004: Femur.L
@@ -61,6 +63,10 @@ ModelImporter:
     400050: Shrek
     400052: //RootNode
     400054: Thorax
+    400056: Bone.004
+    400058: Bone.004_end
+    2300000: Shrek
+    3300000: Shrek
     4300000: Shrek
     9500000: //RootNode
     13700000: Shrek
