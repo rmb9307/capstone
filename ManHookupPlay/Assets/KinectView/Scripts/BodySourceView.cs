@@ -203,8 +203,17 @@ public class BodySourceView : MonoBehaviour
                     {
                         _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                     }
-
-                    RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                    if (showBubble)
+                    {
+                        RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                    } else
+                    {
+                        GameObject[] bubbles = GameObject.FindGameObjectsWithTag("bubbleBody");
+                        foreach (var bub in bubbles)
+                        {
+                            bub.gameObject.SetActive(showBubble);
+                        }
+                    }
                     AddBodyToFrame(body);
                 }
             }
@@ -437,34 +446,35 @@ public class BodySourceView : MonoBehaviour
             Kinect.Joint? targetJoint = null;
 
             GameObject currentBone = GameObject.Find(jt + "Bone");
-            
-            if(_BoneMap.ContainsKey(jt))
+
+            if (_BoneMap.ContainsKey(jt))
             {
                 targetJoint = body.Joints[_BoneMap[jt]];
             }
-            
+
             Transform jointObj = bodyObject.transform.FindChild(jt.ToString());
             var vec = GetVector3FromJoint(sourceJoint);
             jointObj.localPosition = vec;
 
-            
+
             // LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if(targetJoint.HasValue)
+            if (targetJoint.HasValue)
             {
                 //set postion to average joint position of two joint positions
                 currentBone.transform.position = (jointObj.localPosition + GetVector3FromJoint(targetJoint.Value)) / 2;
 
                 //look at next joint with z then rotate so that x is looking at ut
                 currentBone.transform.LookAt(GetVector3FromJoint(targetJoint.Value));
-                currentBone.transform.Rotate(new Vector3 (90, 0, 0));
+                currentBone.transform.Rotate(new Vector3(90, 0, 0));
 
                 //scale to appropriatelengeth
-                float boneDistance = Vector3.Distance(jointObj.localPosition,GetVector3FromJoint(targetJoint.Value));
+                float boneDistance = Vector3.Distance(jointObj.localPosition, GetVector3FromJoint(targetJoint.Value));
                 //create absolute value of distance
-                if (boneDistance < 0) {
+                if (boneDistance < 0)
+                {
                     boneDistance *= -1;
                 }
-                currentBone.transform.localScale = new Vector3 (0.5F, boneDistance / 2, 0.5F);
+                currentBone.transform.localScale = new Vector3(0.5F, boneDistance / 2, 0.5F);
                 // lr.SetPosition(0, jointObj.localPosition);
                 // lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
                 // lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
@@ -472,26 +482,25 @@ public class BodySourceView : MonoBehaviour
             else
             {
                 // lr.enabled = false;
-                Destroy (currentBone);
+                Destroy(currentBone);
             }
         }
-       
     }
     
-    private static Color GetColorForState(Kinect.TrackingState state)
-    {
-        switch (state)
-        {
-        case Kinect.TrackingState.Tracked:
-            return Color.green;
+    //private static Color GetColorForState(Kinect.TrackingState state)
+    //{
+    //    switch (state)
+    //    {
+    //    case Kinect.TrackingState.Tracked:
+    //        return Color.green;
 
-        case Kinect.TrackingState.Inferred:
-            return Color.red;
+    //    case Kinect.TrackingState.Inferred:
+    //        return Color.red;
 
-        default:
-            return Color.black;
-        }
-    }
+    //    default:
+    //        return Color.black;
+    //    }
+    //}
     
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
