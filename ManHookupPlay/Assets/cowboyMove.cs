@@ -252,9 +252,6 @@ public class cowboyMove : MonoBehaviour
 
     public void moveModelWithRecord(BodyRecording.Frame.Body body)
     {
-        Debug.Log("in the void");
-        Debug.Log(body);
-
         var bones = new Dictionary<JointType, BodyRecording.Frame.Body.Joint>();
 
         var joints = body.Joints;

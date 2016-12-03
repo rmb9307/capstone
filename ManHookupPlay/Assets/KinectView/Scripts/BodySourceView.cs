@@ -19,6 +19,12 @@ public class BodySourceView : MonoBehaviour
     public GameObject YogaStudio;
     public GameObject BasketballCourt;
     public GameObject Gym;
+    public Dropdown ModelDropdown;
+    public GameObject Female;
+    public GameObject Ogre;
+    public GameObject Male;
+    private GameObject[] bubbles;
+    private bool bubbleBoyShowing = true;
 
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
@@ -69,6 +75,7 @@ public class BodySourceView : MonoBehaviour
 
     void Update () 
     {
+        //getting values from scene dropdown and setting visibility
         int selectedRoom = SceneDropdown.value;
         if(selectedRoom == 0)
         {
@@ -89,7 +96,44 @@ public class BodySourceView : MonoBehaviour
             BasketballCourt.gameObject.SetActive(false);
             Gym.gameObject.SetActive(true);
         }
-       
+
+        //getting values from model dropdown and setting visibility of those models
+        int selectedModel = ModelDropdown.value;
+        bool showBubble = true;
+        GameObject activeModel = null;
+        if (selectedModel == 0)
+        {
+            showBubble = true;
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(false);
+            activeModel = null;
+        }
+        if (selectedModel == 1)
+        {
+            showBubble = false;
+            Female.gameObject.SetActive(true);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(false);
+            activeModel = Female;
+        }
+        if (selectedModel == 2)
+        {
+            showBubble = false;
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(false);
+            Male.gameObject.SetActive(true);
+            activeModel = Male;
+        }
+        if (selectedModel == 3)
+        {
+            showBubble = false;
+            Female.gameObject.SetActive(false);
+            Ogre.gameObject.SetActive(true);
+            Male.gameObject.SetActive(false);
+            activeModel = Ogre;
+        }
+        //getting values from mode dropdown ans setting play/record/live
         int selectedIdx = ModeDropdown.value;
         if (selectedIdx == 1)
         {
@@ -164,8 +208,11 @@ public class BodySourceView : MonoBehaviour
                     {
                         _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                     }
-
-                    RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                    toggleBubbles(showBubble);
+                    if (bubbleBoyShowing)
+                    {
+                        RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                    }
                     AddBodyToFrame(body);
                 }
             }
@@ -187,13 +234,12 @@ public class BodySourceView : MonoBehaviour
 
             if (loadedRecording.frames.Count <= frameNo)
             {
-                Debug.Log("Restarting playback from frame 0.");
                 frameNo = 0;
             }
 
-            Debug.Log("Frame " + frameNo);
             var frame = loadedRecording.frames[frameNo++];
-            Debug.Log(frame.bodies.Count + " bodies in frame number " + frameNo);
+
+            //toggleBubbles(showBubble);
 
             foreach (var body in _Bodies)
             {
@@ -212,22 +258,20 @@ public class BodySourceView : MonoBehaviour
             {
                 if (!_Bodies.ContainsKey(body.TrackingId))
                 {
-                    Debug.Log("Creating body" + body.TrackingId);
                     _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
                 }
+                toggleBubbles(showBubble);
                 RefreshBodyRecordedData(body, _Bodies[body.TrackingId]);
                 if (modelCounter == 0)
                 {
-                    GameObject model = GameObject.Find("FemaleOriginal");
-                    if (model != null)
+                    if (activeModel != null)
                     {
-                        model.GetComponent<cowboyMove>().moveModelWithRecord(body);
+                        activeModel.GetComponent<cowboyMove>().moveModelWithRecord(body);
                         modelCounter++;
                     }
                 }
             }
             // ReadNextFrame(body);  
-            Debug.Log("HI");
             
 
         }
@@ -269,7 +313,6 @@ public class BodySourceView : MonoBehaviour
         using (var stream = new FileStream(filename, FileMode.OpenOrCreate))
         {
             xmlRecording.frames.Add(frame);
-            Debug.Log("Writing " + filename);
             serializer.Serialize(stream, xmlRecording);
         }
     }
@@ -281,10 +324,7 @@ public class BodySourceView : MonoBehaviour
         string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
         using (var stream = new FileStream(filename, FileMode.Open))
         {
-            Debug.Log("Reading " + filename); 
             var recording = serializer.Deserialize(stream) as BodyRecording ;
-            Debug.Log("Loaded a recording with " + recording.frames.Count + " frames.");
-            Debug.Log("First x coordinate: " + recording.frames[0].bodies[0].Joints[0].Position.x);
             return recording;
         }
     }
@@ -293,17 +333,12 @@ public class BodySourceView : MonoBehaviour
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
-
+        body.tag = "bubbleBody";
 
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject boneObj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            
-            // LineRenderer lr = jointObj.AddComponent<LineRenderer>();
-            // lr.SetVertexCount(2);
-            // lr.material = BoneMaterial;
-            // lr.SetWidth(0.5f, 0.5f);
 
             float scale = 2f;
             if (jointSizes.ContainsKey(jt)) {
@@ -316,21 +351,13 @@ public class BodySourceView : MonoBehaviour
             boneObj.name = jointObj.name + "Bone";
             boneObj.transform.parent = body.transform;
             boneObj.transform.localScale -= new Vector3 (0.5F, 0, 0.5F);
-      
-
-            
         }
-
-
-
         return body;
     }
 
     private void RefreshBodyRecordedData(BodyRecording.Frame.Body body, GameObject bodyObject)
     {
-        Debug.Log("RefreshBodyRecordedData entered");  Debug.Log(body); Debug.Log(bodyObject);
         var joints = body.Joints;
-        Debug.Log(joints);
 
         var bones = new Dictionary<Kinect.JointType, BodyRecording.Frame.Body.Joint>();
         foreach (var joint in joints)
@@ -355,7 +382,6 @@ public class BodySourceView : MonoBehaviour
             Transform jointObj = bodyObject.transform.FindChild(joint.Name);
             jointObj.localPosition = position;
 
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if (targetJoint != null && currentBone != null)
             {
                 //set postion to average joint position of two joint positions
@@ -372,13 +398,9 @@ public class BodySourceView : MonoBehaviour
                     boneDistance *= -1;
                 }
                 currentBone.transform.localScale = new Vector3 (0.5F, boneDistance / 2, 0.5F);
-                // lr.SetPosition(0, jointObj.localPosition);
-                // lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                // lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
             }
             else
             {
-                // lr.enabled = false;
                 Destroy (currentBone);
             }
         }
@@ -393,64 +415,68 @@ public class BodySourceView : MonoBehaviour
             Kinect.Joint? targetJoint = null;
 
             GameObject currentBone = GameObject.Find(jt + "Bone");
-            
-            if(_BoneMap.ContainsKey(jt))
+
+            if (_BoneMap.ContainsKey(jt))
             {
                 targetJoint = body.Joints[_BoneMap[jt]];
             }
-            
+
             Transform jointObj = bodyObject.transform.FindChild(jt.ToString());
             var vec = GetVector3FromJoint(sourceJoint);
             jointObj.localPosition = vec;
 
-            
-            // LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if(targetJoint.HasValue)
+            if (targetJoint.HasValue)
             {
                 //set postion to average joint position of two joint positions
                 currentBone.transform.position = (jointObj.localPosition + GetVector3FromJoint(targetJoint.Value)) / 2;
 
                 //look at next joint with z then rotate so that x is looking at ut
                 currentBone.transform.LookAt(GetVector3FromJoint(targetJoint.Value));
-                currentBone.transform.Rotate(new Vector3 (90, 0, 0));
+                currentBone.transform.Rotate(new Vector3(90, 0, 0));
 
                 //scale to appropriatelengeth
-                float boneDistance = Vector3.Distance(jointObj.localPosition,GetVector3FromJoint(targetJoint.Value));
+                float boneDistance = Vector3.Distance(jointObj.localPosition, GetVector3FromJoint(targetJoint.Value));
                 //create absolute value of distance
-                if (boneDistance < 0) {
+                if (boneDistance < 0)
+                {
                     boneDistance *= -1;
                 }
-                currentBone.transform.localScale = new Vector3 (0.5F, boneDistance / 2, 0.5F);
-                // lr.SetPosition(0, jointObj.localPosition);
-                // lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                // lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                currentBone.transform.localScale = new Vector3(0.5F, boneDistance / 2, 0.5F);
             }
             else
             {
-                // lr.enabled = false;
-                Destroy (currentBone);
+                Destroy(currentBone);
             }
         }
-       
     }
-    
-    private static Color GetColorForState(Kinect.TrackingState state)
-    {
-        switch (state)
-        {
-        case Kinect.TrackingState.Tracked:
-            return Color.green;
 
-        case Kinect.TrackingState.Inferred:
-            return Color.red;
-
-        default:
-            return Color.black;
-        }
-    }
-    
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+    }
+
+    private void toggleBubbles (bool showBubbles)
+    {
+        if(showBubbles != bubbleBoyShowing)
+        {
+            if (showBubbles)
+            {
+                foreach (var bub in bubbles)
+                {
+                    bub.gameObject.SetActive(showBubbles);
+                }
+                bubbleBoyShowing = true;
+
+            }
+            else
+            {
+                bubbles = GameObject.FindGameObjectsWithTag("bubbleBody");
+                foreach (var bub in bubbles)
+                {
+                    bub.gameObject.SetActive(showBubbles);
+                }
+                bubbleBoyShowing = false;
+            }
+        }  
     }
 }
