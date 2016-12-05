@@ -76,6 +76,11 @@ public class BodySourceView : MonoBehaviour
 
     void Update () 
     {
+        //ActionDropdown.onValueChanged.AddListener(delegate
+        //{
+        //    LoadRecording();
+        //});
+
         //getting values from scene dropdown and setting visibility
         int selectedRoom = SceneDropdown.value;
         if(selectedRoom == 0)
