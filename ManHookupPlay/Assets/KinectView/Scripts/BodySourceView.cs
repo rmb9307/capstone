@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Kinect = Windows.Kinect;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 using System.Xml.Serialization;
 using System.Xml;
@@ -76,10 +77,7 @@ public class BodySourceView : MonoBehaviour
 
     void Update () 
     {
-        //ActionDropdown.onValueChanged.AddListener(delegate
-        //{
-        //    LoadRecording();
-        //});
+        
 
         //getting values from scene dropdown and setting visibility
         int selectedRoom = SceneDropdown.value;
@@ -227,6 +225,13 @@ public class BodySourceView : MonoBehaviour
         }
         else
         {
+            ActionDropdown.onValueChanged.AddListener(delegate
+            {
+                loadedRecording = null;
+                //Debug.Log("in onchange");
+                throw new Exception("Switching play streams, throwing error only way to do it apparently");
+
+            });
             if (loadedRecording == null)
             {
                 loadedRecording = LoadRecording();
@@ -327,6 +332,7 @@ public class BodySourceView : MonoBehaviour
 
     private BodyRecording LoadRecording()
     {
+        Debug.Log("in load recording");
         string filename = ""; 
         int selectedAction = ActionDropdown.value;
         if (selectedAction == 0)
