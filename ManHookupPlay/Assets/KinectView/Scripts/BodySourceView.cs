@@ -71,7 +71,7 @@ public class BodySourceView : MonoBehaviour
     };
 
     enum Mode { Recording, Playing, Live };
-    private Mode mode = Mode.Recording;
+    private Mode mode = Mode.Playing;
     private bool actuallyRecord = true;
    
 
@@ -138,21 +138,21 @@ public class BodySourceView : MonoBehaviour
             activeModel = Ogre;
         }
         //getting values from mode dropdown ans setting play/record/live
-        int selectedIdx = ModeDropdown.value;
-        if (selectedIdx == 1)
-        {
-            mode = Mode.Recording;
-            actuallyRecord = true;
-        }
-        else if (selectedIdx == 2)
-        {
-            mode = Mode.Playing;
-        }
-        else if (selectedIdx == 0)
-        {
-            mode = Mode.Live;
-            actuallyRecord = false;
-        }
+//        int selectedIdx = ModeDropdown.value;
+//        if (selectedIdx == 1)
+//        {
+//            mode = Mode.Recording;
+//            actuallyRecord = true;
+//        }
+//        else if (selectedIdx == 2)
+//        {
+//            mode = Mode.Playing;
+//        }
+//        else if (selectedIdx == 0)
+//        {
+//            mode = Mode.Live;
+//            actuallyRecord = false;
+//        }
 
             if (mode == Mode.Recording || mode== Mode.Live) {
             if (BodySourceManager == null)
