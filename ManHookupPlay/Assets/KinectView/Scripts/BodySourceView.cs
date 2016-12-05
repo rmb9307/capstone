@@ -16,6 +16,7 @@ public class BodySourceView : MonoBehaviour
     public GameObject BodySourceManager;
     public Dropdown ModeDropdown;
     public Dropdown SceneDropdown;
+    public Dropdown ActionDropdown;
     public GameObject YogaStudio;
     public GameObject BasketballCourt;
     public GameObject Gym;
@@ -321,7 +322,21 @@ public class BodySourceView : MonoBehaviour
 
     private BodyRecording LoadRecording()
     {
-        string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
+        string filename = ""; ;
+        int selectedAction = ActionDropdown.value;
+        if (selectedAction == 0)
+        {
+            filename = "Assets/Captures/allieYoga2.xml";
+        }
+        if (selectedAction == 1)
+        {
+            filename = "Assets/Captures/KhristianBasketball2.xml";
+        }
+        if (selectedAction == 2)
+        {
+            filename = "Assets/Captures/ScoutLifting.xml";
+        }
+       // string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
         using (var stream = new FileStream(filename, FileMode.Open))
         {
             var recording = serializer.Deserialize(stream) as BodyRecording ;
