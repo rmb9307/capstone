@@ -92,6 +92,14 @@
     <Compile Include="Assets\cowboyMove.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Captures\KhristianBasketball1.xml" />
+    <None Include="Assets\Captures\KhristianBasketball2.xml" />
+    <None Include="Assets\Captures\KhristianDancing.xml" />
+    <None Include="Assets\Captures\ScoutPushup.xml" />
+    <None Include="Assets\Captures\allieYoga1.xml" />
+    <None Include="Assets\Captures\allieYoga2.xml" />
+    <None Include="Assets\Captures\scoutLifting.xml" />
+    <None Include="Assets\Captures\scoutLifting2.xml" />
     <None Include="Assets\Wispy Sky\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
