@@ -228,7 +228,7 @@ public class BodySourceView : MonoBehaviour
                 frameNo = 0;
             }
 
-            if (tick++ % 10 != 0)
+            if (tick++ % 4 != 0)
             {
                 return;
             }
@@ -322,7 +322,7 @@ public class BodySourceView : MonoBehaviour
 
     private BodyRecording LoadRecording()
     {
-        string filename = ""; ;
+        string filename = ""; 
         int selectedAction = ActionDropdown.value;
         if (selectedAction == 0)
         {
