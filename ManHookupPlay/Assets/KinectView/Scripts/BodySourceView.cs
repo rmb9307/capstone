@@ -337,20 +337,21 @@ public class BodySourceView : MonoBehaviour
         int selectedAction = ActionDropdown.value;
         if (selectedAction == 0)
         {
-            filename = "Assets/Captures/allieYoga2.xml";
+            filename = "allieYoga2";
         }
         if (selectedAction == 1)
         {
-            filename = "Assets/Captures/KhristianBasketball2.xml";
+            filename = "KhristianBasketball2";
         }
         if (selectedAction == 2)
         {
-            filename = "Assets/Captures/ScoutLifting.xml";
+            filename = "ScoutLifting";
         }
        // string filename = Path.Combine(Application.persistentDataPath, "body_recording.xml");
-        using (var stream = new FileStream(filename, FileMode.Open))
+		using (TextReader textReader = new StringReader(Resources.Load<TextAsset>(filename).text))
+        //using (var stream = new FileStream(filename, FileMode.Open))
         {
-            var recording = serializer.Deserialize(stream) as BodyRecording ;
+            var recording = serializer.Deserialize(textReader) as BodyRecording ;
             return recording;
         }
     }

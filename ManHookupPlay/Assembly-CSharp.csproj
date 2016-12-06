@@ -61,15 +61,15 @@
      <Compile Include="Assets\KinectView\Scripts\VideoFrameDataContainer.cs" />
      <Compile Include="Assets\KinectView\Scripts\VideoReader.cs" />
      <Compile Include="Assets\cowboyMove.cs" />
-     <None Include="Assets\Captures\allieYoga1.xml" />
-     <None Include="Assets\Captures\KhristianBasketball2.xml" />
-     <None Include="Assets\Captures\ScoutPushup.xml" />
-     <None Include="Assets\Captures\scoutLifting2.xml" />
-     <None Include="Assets\Captures\KhristianBasketball1.xml" />
-     <None Include="Assets\Captures\allieYoga2.xml" />
-     <None Include="Assets\Captures\scoutLifting.xml" />
-     <None Include="Assets\Captures\KhristianDancing.xml" />
+     <None Include="Assets\Resources\scoutLifting2.xml" />
+     <None Include="Assets\Resources\allieYoga1.xml" />
+     <None Include="Assets\Resources\allieYoga2.xml" />
+     <None Include="Assets\Resources\KhristianBasketball2.xml" />
+     <None Include="Assets\Resources\ScoutPushup.xml" />
+     <None Include="Assets\Resources\KhristianBasketball1.xml" />
+     <None Include="Assets\Resources\KhristianDancing.xml" />
      <None Include="Assets\Wispy Sky\ReadMe.txt" />
+     <None Include="Assets\Resources\scoutLifting.xml" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>

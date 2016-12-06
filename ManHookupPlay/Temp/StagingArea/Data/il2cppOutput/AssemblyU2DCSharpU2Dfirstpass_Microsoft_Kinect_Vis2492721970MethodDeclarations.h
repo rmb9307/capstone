@@ -1,0 +1,23 @@
+﻿#pragma once
+
+#include "il2cpp-config.h"
+
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+#include <stdint.h>
+#include <assert.h>
+#include <exception>
+
+// Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameReader/<Microsoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_Handler>c__AnonStoreyA
+struct U3CMicrosoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_HandlerU3Ec__AnonStoreyA_t2492721970;
+
+#include "codegen/il2cpp-codegen.h"
+
+// System.Void Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameReader/<Microsoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_Handler>c__AnonStoreyA::.ctor()
+extern "C"  void U3CMicrosoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_HandlerU3Ec__AnonStoreyA__ctor_m1180983645 (U3CMicrosoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_HandlerU3Ec__AnonStoreyA_t2492721970 * __this, const MethodInfo* method) IL2CPP_METHOD_ATTR;
+// System.Void Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameReader/<Microsoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_Handler>c__AnonStoreyA::<>m__32()
+extern "C"  void U3CMicrosoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_HandlerU3Ec__AnonStoreyA_U3CU3Em__32_m3362018181 (U3CMicrosoft_Kinect_VisualGestureBuilder_VisualGestureBuilderFrameArrivedEventArgs_Delegate_HandlerU3Ec__AnonStoreyA_t2492721970 * __this, const MethodInfo* method) IL2CPP_METHOD_ATTR;
