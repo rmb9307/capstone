@@ -1,0 +1,176 @@
+@font-face {
+    font-family: heading;
+    src: url(Avenir.ttc);
+}
+
+@font-face {
+    font-family: boldHeading;
+    src: url(bebas_neue/BebasNeueBold.otf);
+}
+
+
+
+
+
+body {
+  background-color: white;
+  color:white; }
+
+.navbar-default {
+  background-color: white;
+}
+
+input, button, submit {
+  border:none;
+  background-color: transparent;
+  color: black;
+  padding: 15px;
+}
+
+button { cursor: pointer; }
+
+button:focus {
+   outline:none !important;
+   color: gray;
+}
+
+#home {
+  height: 100vh;
+  background: none;
+  background-color: #FFEFEF;
+ }
+
+ .demo {
+   height: 100vh;
+ }
+
+ #videos {
+  height: 100vh;
+  background-color: #FFEFEF;
+  position: relative;
+ }
+
+ .center_div {
+  color: pink;
+  /*margin: 7% 5%;*/
+  height:100%;
+  background-image: url(man_shadows.png);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+ }
+
+
+h6 {
+  font-size: 40px;
+  font-family: heading;
+  padding-top: 50px;
+  height: 75vh;
+  width: 40vw;
+  line-height: 55px;
+  color: rgba(0, 0, 0, .1);
+
+
+}
+
+.larger {
+  font-size: 120px;
+  letter-spacing: 1.5px;
+  color: white;
+  font-family: boldHeading;
+  padding-top: 20px;
+  vertical-align: bottom;
+  line-height: 90px;
+  display: inline-block;
+
+}
+
+.large {
+  font-size: 70px;
+   display: inline-block;
+  padding-top: 20px;
+  color: white;
+  letter-spacing: 4px;
+   line-height: 35px;
+  font-family: boldHeading;
+
+}
+
+
+.black {
+  color: rgba(0, 0, 0, .1);
+  font-weight: normal;
+
+}
+
+.circle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+    background-color: white;
+
+}
+
+
+.circle-small {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 600px;
+  bottom: 140px;
+}
+
+.circle-medium {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  right: 400px;
+  bottom: 50px;
+}
+
+.circle-large {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  right: 100px;
+  top: 70px;
+}
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, .2);
+  border-radius: none;
+  border: none;
+  display: none;
+  top: 0px;
+  position: fixed;
+  right: 0;
+  z-index: 40000;
+}
+.popup iframe {
+  margin-left: 15vw;
+  margin-top: 70px;
+  box-shadow: 20px 20px 35px #888888;
+  border: none;
+  width: 70vw;
+  height: 80vh;
+}
+
+.close {
+  padding-top: 47px;
+  padding-right: 50px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 30px;
+  font-family: Heading;
+  text-shadow: none;
+}
+
+#modalBtn1, #modalBtn2, #modalBtn3 {
+  text-align: center;
+}
+
+
+button img {
+  padding-top: 15%;
+}
